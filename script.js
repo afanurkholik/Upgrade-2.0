@@ -219,22 +219,51 @@ function shareResult() {
     }
 }
 
-// DATA COLLECTION (Modular Hook)
+// DATA COLLECTION (Google Sheets Integration)
 function submitFeedback() {
     const text = document.getElementById('feedback-text').value;
     const selectedEmojiBtn = document.querySelector('.feedback-emojis button[data-selected="true"]');
-    const rating = selectedEmojiBtn ? selectedEmojiBtn.dataset.val : null;
+    const rating = selectedEmojiBtn ? selectedEmojiBtn.dataset.val : '-';
     
     const btn = document.getElementById('btn-submit-feedback');
     btn.innerText = "Menyimpan...";
-    
+    btn.disabled = true;
+
+    // Susun payload sesuai dengan keys di Apps Script
     const payload = {
-        timestamp: new Date().toISOString(),
-        user: userData,
-        archetype: finalArchetype,
-        feedbackRating: rating,
-        feedbackText: text
+        name: userData.name || "-",
+        contact: userData.contact || "-",
+        archetype: finalArchetype || "-",
+        selectedUpgrade: userData.selectedUpgrade || "-",
+        rating: rating,
+        feedback: text || "-"
     };
+
+    // GANTI STRING DI BAWAH DENGAN WEB APP URL DARI GOOGLE APPS SCRIPT
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbwtrvVgCVW6Agr9iCHfrTKh67uM40msLYu88v9nxdlTk5L_sEnnEcxtfoV378r89lh2/exec';
+
+    // Menggunakan text/plain untuk menghindari issue CORS preflight di browser
+    fetch(scriptURL, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'text/plain;charset=utf-8',
+        },
+        body: JSON.stringify(payload)
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.result === "success") {
+            btn.innerText = "Thanks atas feedbacknya! ✨";
+        } else {
+            throw new Error(data.message);
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        btn.innerText = "Gagal kirim, tapi santai aja!";
+        btn.disabled = false;
+    });
+}
 
     // ==========================================
     // MODULE: EXPORT DATA TO BACKEND / GOOGLE SHEETS
