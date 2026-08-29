@@ -165,3 +165,73 @@ button:active { transform: scale(0.98); }
     .rc-footer { flex-direction: column; align-items: flex-start; gap: 8px; }
     .rc-footer-text { max-width: 100%; }
 }
+
+/* --- DARK MODE & TRANSITIONS --- */
+:root {
+    --transition-speed: 0.5s;
+}
+
+body.dark-mode {
+    --bg-light: #111827;
+    --text-main: #f9fafb;
+    --text-muted: #9ca3af;
+    --border: #374151;
+    --white: #1f2937;
+    --card-bg: #1f2937;
+    --card-text: #f9fafb;
+}
+
+/* Transisi Halus antar Tema */
+body, .content-block, input, select, textarea, button, .result-card, .option-card, .rc-stats-container, .rc-qr-section {
+    transition: background-color var(--transition-speed) ease, 
+                color var(--transition-speed) ease, 
+                border-color var(--transition-speed) ease,
+                box-shadow var(--transition-speed) ease;
+}
+
+/* Transisi Bahasa (Fade In/Out) */
+.fade-content {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.fade-out {
+    opacity: 0;
+    transform: translateY(5px);
+}
+
+/* Global Controls (Pojok Kanan Atas) */
+.global-controls {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    gap: 8px;
+    z-index: 100;
+}
+.control-btn {
+    background: var(--white);
+    border: 2px solid var(--border);
+    color: var(--text-main);
+    border-radius: 50px;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    font-family: var(--font-display);
+    font-weight: 700;
+    padding: 0;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+.control-btn:hover {
+    border-color: var(--text-main);
+}
+
+/* Error Message */
+.error-msg {
+    color: #ef4444;
+    font-size: 0.8rem;
+    margin-top: 6px;
+    margin-left: 12px;
+    font-weight: 500;
+}
