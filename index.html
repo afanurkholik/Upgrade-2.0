@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upgrade Yourself 2.0</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    
+    <style>
+        :root {
+            /* Base Colors */
+            --pure-white: #ffffff;
+            --warm-white: #fafafa;
+            --light-grey: #f3f4f6;
+            --space-grey: #1f2937;
+            --soft-silver: #9ca3af;
+            
+            /* Accents */
+            --cobalt-blue: #2563eb;
+            --electric-cyan: #06b6d4;
+            --orange: #f97316;
+            --lime: #84cc16;
+            --lavender: #8b5cf6;
+            --bright-yellow: #eab308;
+            
+            /* Typography */
+            --font-head: 'Space Grotesk', sans-serif;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--warm-white);
+            color: var(--space-grey);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* UTILITIES */
+        .hidden { display: none !important; }
+        .fade-in { animation: fadeIn 0.6s ease forwards; }
+        .slide-up { animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* BUTTONS */
+        .btn-primary {
+            background-color: var(--space-grey);
+            color: var(--pure-white);
+            border: none;
+            padding: 16px 32px;
+            border-radius: 100px;
+            font-family: var(--font-head);
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(31, 41, 55, 0.2);
+        }
+        .btn-secondary {
+            background-color: var(--pure-white);
+            color: var(--space-grey);
+            border: 2px solid var(--light-grey);
+            padding: 14px 28px;
+            border-radius: 100px;
+            font-family: var(--font-head);
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .btn-secondary:hover {
+            border-color: var(--space-grey);
+        }
+
+        /* --- HERO SECTION --- */
+        #hero-section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 24px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-title {
+            font-family: var(--font-head);
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -0.04em;
+            margin-bottom: 16px;
+            z-index: 10;
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: var(--soft-silver);
+            max-width: 400px;
+            margin-bottom: 32px;
+            z-index: 10;
+        }
+
+        .microcopy {
+            font-size: 0.85rem;
+            color: var(--soft-silver);
+            margin-top: 16px;
+            font-weight: 500;
+        }
+
+        /* Creative Universe / Floating Cards */
+        .creative-universe {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            height: 350px;
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .character-placeholder {
+            width: 150px;
+            height: 150px;
+            background: var(--pure-white);
+            border: 4px solid var(--space-grey);
+            border-radius: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            box-shadow: 8px 8px 0px var(--cobalt-blue);
+            z-index: 5;
+            position: relative;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .floating-card {
+            position: absolute;
+            background: var(--pure-white);
+            padding: 10px 16px;
+            border-radius: 16px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            border: 2px solid var(--pure-white);
+            z-index: 2;
+            white-space: nowrap;
+        }
+        /* Hardcoded positions for Pinterest vibe */
+        .fc-1 { top: 10%; left: 5%; transform: rotate(-8deg); color: var(--cobalt-blue); border-color: var(--cobalt-blue); }
+        .fc-2 { top: 20%; right: 5%; transform: rotate(12deg); color: var(--orange); border-color: var(--orange); }
+        .fc-3 { bottom: 15%; left: 10%; transform: rotate(5deg); color: var(--lavender); border-color: var(--lavender); }
+        .fc-4 { bottom: 25%; right: 10%; transform: rotate(-6deg); color: var(--electric-cyan); border-color: var(--electric-cyan); }
+        .fc-5 { top: 40%; left: -5%; transform: rotate(-15deg); color: var(--space-grey); border-color: var(--light-grey); font-size: 0.8rem;}
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* --- ASSESSMENT SECTION --- */
+        #assessment-section {
+            min-height: 100vh;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 40px 24px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .progress-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 40px;
+        }
+
+        .progress-text {
+            font-family: var(--font-head);
+            font-weight: 700;
+            color: var(--soft-silver);
+            letter-spacing: 2px;
+        }
+
+        .progress-bar {
+            flex-grow: 1;
+            height: 6px;
+            background: var(--light-grey);
+            margin-left: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: var(--space-grey);
+            width: 0%;
+            transition: width 0.4s ease;
+        }
+
+        .question-text {
+            font-family: var(--font-head);
+            font-size: clamp(1.8rem, 4vw, 2.2rem);
+            font-weight: 700;
+            margin-bottom: 32px;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+        }
+
+        .options-container {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .option-card {
+            background: var(--pure-white);
+            border: 2px solid var(--light-grey);
+            padding: 20px 24px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 1.05rem;
+            font-weight: 500;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+        }
+
+        .option-card:hover {
+            border-color: var(--space-grey);
+            transform: translateX(4px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .option-card.selected {
+            border-color: var(--cobalt-blue);
+            background: rgba(37, 99, 235, 0.05);
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: auto;
+            padding-top: 40px;
+        }
+
+        /* Custom Textarea */
+        textarea.journal-card {
+            width: 100%;
+            height: 200px;
+            background: var(--pure-white);
+            border: 2px solid var(--light-grey);
+            border-radius: 24px;
+            padding: 24px;
+            font-family: var(--font-body);
+            font-size: 1.1rem;
+            resize: none;
+            outline: none;
+            box-shadow: inset 0 2px 10px rgba(0,0,0,0.02);
+            transition: border-color 0.3s;
+        }
+        textarea.journal-card:focus {
+            border-color: var(--cobalt-blue);
+        }
+
+        /* --- RESULT SECTION --- */
+        #result-section {
+            min-height: 100vh;
+            padding: 60px 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: #f1f5f9; /* slightly different bg for reveal */
+        }
+
+        .reveal-text {
+            font-family: var(--font-head);
+            color: var(--soft-silver);
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+        }
+
+        /* THE COLLECTIBLE CARD (4:5 Ratio) */
+        .result-card-container {
+            width: 100%;
+            max-width: 360px; /* Base for mobile */
+            aspect-ratio: 4/5;
+            margin-bottom: 40px;
+            perspective: 1000px;
+        }
+
+        .result-card {
+            width: 100%;
+            height: 100%;
+            background: var(--pure-white);
+            border-radius: 24px;
+            padding: 24px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08), inset 0 0 0 2px rgba(255,255,255,0.5);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            /* Premium textures */
+            background-image: radial-gradient(circle at 100% 0%, rgba(250, 250, 250, 0.8) 0%, transparent 50%),
+                              linear-gradient(to bottom right, #ffffff, #f9fafb);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .rc-header {
+            font-family: var(--font-head);
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--space-grey);
+            opacity: 0.7;
+            text-align: center;
+            margin-bottom: 16px;
+        }
+
+        .rc-character {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 6rem;
+            position: relative;
+        }
+        
+        .rc-character-bg {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            background: var(--electric-cyan);
+            border-radius: 50%;
+            opacity: 0.15;
+            z-index: 0;
+        }
+
+        .rc-identity {
+            text-align: center;
+            z-index: 2;
+        }
+
+        .rc-archetype {
+            font-family: var(--font-head);
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--space-grey);
+            margin-bottom: 4px;
+            line-height: 1;
+        }
+
+        .rc-quote {
+            font-size: 0.9rem;
+            color: var(--soft-silver);
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        .rc-stats {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+
+        .stat-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            font-family: var(--font-head);
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: var(--space-grey);
+        }
+
+        .stat-bar {
+            color: var(--space-grey);
+            font-family: monospace;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+
+        .rc-footer {
+            font-size: 0.6rem;
+            text-align: center;
+            color: var(--soft-silver);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Stickers on card */
+        .rc-sticker {
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            background: var(--bright-yellow);
+            border-radius: 50%;
+            border: 2px solid var(--pure-white);
+            top: 20px;
+            right: 20px;
+        }
+
+        /* Insights & Upgrade */
+        .insights-section {
+            max-width: 500px;
+            width: 100%;
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-family: var(--font-head);
+            font-size: 1.2rem;
+            margin-bottom: 16px;
+        }
+
+        .insight-item {
+            background: var(--pure-white);
+            padding: 16px;
+            border-radius: 12px;
+            margin-bottom: 12px;
+            display: flex;
+            gap: 16px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        }
+
+        .insight-num {
+            font-family: var(--font-head);
+            font-weight: 700;
+            color: var(--cobalt-blue);
+        }
+
+        .upgrade-card {
+            background: var(--space-grey);
+            color: var(--pure-white);
+            padding: 24px;
+            border-radius: 20px;
+            width: 100%;
+            max-width: 500px;
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .upgrade-card h3 {
+            font-family: var(--font-head);
+            color: var(--electric-cyan);
+            margin-bottom: 20px;
+        }
+
+        .uc-row {
+            margin-bottom: 16px;
+        }
+        .uc-label {
+            font-size: 0.75rem;
+            color: var(--soft-silver);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+        .uc-value {
+            font-weight: 500;
+            font-size: 1.05rem;
+        }
+
+        .action-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            width: 100%;
+            max-width: 500px;
+            margin-bottom: 40px;
+        }
+
+        .referral-loop {
+            text-align: center;
+            max-width: 400px;
+            padding: 32px 0;
+            border-top: 1px solid var(--light-grey);
+        }
+
+        /* Responsive */
+        @media (min-width: 768px) {
+            .action-buttons { flex-direction: row; justify-content: center; }
+            .action-buttons button { flex: 1; }
+            .hero-title { font-size: 4.5rem; }
+            .result-card-container { max-width: 400px; }
+        }
+    </style>
+</head>
+<body>
+
+    <section id="hero-section">
+        <div class="creative-universe">
+            <div class="character-placeholder">🤷‍♂️</div>
+            
+            <div class="floating-card fc-1">Am I behind?</div>
+            <div class="floating-card fc-2">Should I keep going?</div>
+            <div class="floating-card fc-3">What am I actually good at?</div>
+            <div class="floating-card fc-4">Why am I still stuck?</div>
+            <div class="floating-card fc-5">What do I actually want?</div>
+        </div>
+        
+        <h1 class="hero-title">IT'S TIME TO<br>UPGRADE YOURSELF 2.0</h1>
+        <p class="hero-subtitle">5 menit buat berhenti sebentar dan melihat: sebenarnya kamu lagi ada di fase mana?</p>
+        
+        <button class="btn-primary" onclick="startAssessment()">
+            Temukan Versi 2.0-ku &rarr;
+        </button>
+        <p class="microcopy">±5 menit &bull; nggak ada jawaban benar atau salah</p>
+    </section>
+
+    <section id="assessment-section" class="hidden">
+        <div class="progress-header">
+            <span class="progress-text" id="progress-text">01 / 12</span>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill"></div>
+            </div>
+        </div>
+
+        <div id="question-container" class="slide-up">
+            <h2 class="question-text" id="question-text">Question goes here...</h2>
+            <div class="options-container" id="options-container">
+                </div>
+        </div>
+
+        <div id="custom-reflection" class="hidden slide-up">
+            <h2 class="question-text">Oke, sekarang giliran kamu ngomong.</h2>
+            <p style="margin-bottom: 24px; color: var(--soft-silver);">Kalau ada satu hal tentang hidupmu yang belum sempat ditanya di sini, ceritain aja.</p>
+            <textarea class="journal-card" placeholder="Nggak harus rapi. Tulis aja apa yang lagi ada di kepala kamu. (Opsional)"></textarea>
+        </div>
+
+        <div class="nav-buttons">
+            <button class="btn-secondary" id="btn-back" onclick="prevQuestion()" style="visibility: hidden;">&larr; Back</button>
+            <button class="btn-primary" id="btn-next" onclick="nextQuestion()" disabled>Next &rarr;</button>
+        </div>
+    </section>
+
+    <section id="result-section" class="hidden">
+        <p class="reveal-text slide-up">YOUR UPGRADE TYPE</p>
+        
+        <div class="result-card-container slide-up" id="capture-area">
+            <div class="result-card">
+                <div class="rc-sticker"></div>
+                <div class="rc-header">
+                    IT'S TIME TO UPGRADE YOURSELF 2.0<br>
+                    <span style="font-weight: 400; font-size: 0.7rem;">YOUR CURRENT VERSION</span>
+                </div>
+                
+                <div class="rc-character">
+                    <div class="rc-character-bg" id="rc-bg-color"></div>
+                    <span id="rc-emoji" style="z-index: 1;">🎒</span>
+                </div>
+
+                <div class="rc-identity">
+                    <h2 class="rc-archetype" id="rc-title">THE EXPLORER</h2>
+                    <p class="rc-quote" id="rc-quote">"You’re not behind.<br>You’re still figuring it out."</p>
+                </div>
+
+                <div class="rc-stats">
+                    <div class="stat-row">
+                        <span>DIRECTION</span>
+                        <span class="stat-bar" id="stat-dir">██████░░░░</span>
+                    </div>
+                    <div class="stat-row">
+                        <span>ACTION</span>
+                        <span class="stat-bar" id="stat-act">█████░░░░░</span>
+                    </div>
+                    <div class="stat-row">
+                        <span>GROWTH DRIVE</span>
+                        <span class="stat-bar" id="stat-gro">████████░░</span>
+                    </div>
+                </div>
+
+                <div class="rc-footer">Life Direction Assessment v0.1</div>
+            </div>
+        </div>
+
+        <div class="insights-section slide-up" style="animation-delay: 0.2s;">
+            <h3 class="section-title">Yang aku tangkap dari jawabanmu...</h3>
+            <div id="insights-container">
+                </div>
+        </div>
+
+        <div class="upgrade-card slide-up" style="animation-delay: 0.3s;">
+            <h3>YOUR NEXT UPGRADE</h3>
+            <div class="uc-row">
+                <div class="uc-label">KEEP</div>
+                <div class="uc-value" id="uc-keep">Rasa ingin tahu dan eksplorasimu.</div>
+            </div>
+            <div class="uc-row">
+                <div class="uc-label">UPGRADE</div>
+                <div class="uc-value" id="uc-upgrade">Berhenti menunggu semuanya terasa jelas.</div>
+            </div>
+            <div class="uc-row" style="margin-bottom: 0;">
+                <div class="uc-label">NEXT MOVE</div>
+                <div class="uc-value" id="uc-move">Pilih satu hal kecil yang bisa kamu mulai dalam 24 jam.</div>
+            </div>
+        </div>
+
+        <p style="margin-bottom: 16px; font-weight: 500; text-align: center;">Kalau ini relate sama kamu, simpan dulu.</p>
+        <div class="action-buttons slide-up" style="animation-delay: 0.4s;">
+            <button class="btn-primary" onclick="downloadResult()" style="justify-content: center;">
+                Download My Result &darr;
+            </button>
+            <button class="btn-secondary" onclick="shareResult()" style="justify-content: center;">
+                Share My Result &rarr;
+            </button>
+        </div>
+
+        <div class="referral-loop slide-up" style="animation-delay: 0.5s;">
+            <h4 style="font-family: var(--font-head); font-size: 1.2rem; margin-bottom: 8px;">Penasaran temanmu termasuk yang mana?</h4>
+            <p style="color: var(--soft-silver); font-size: 0.9rem; margin-bottom: 20px;">Suruh mereka coba. Jangan-jangan hasilnya malah kebalikan kamu.</p>
+            <button class="btn-secondary" onclick="location.reload()">Coba Bareng &rarr;</button>
+        </div>
+    </section>
+
+    <script>
+        // Data Questions (Simulated 12 questions mapped to 5 archetypes: Explorer, Restarter, Builder, Dreamer, Awakening)
+        const questions = [
+            {
+                q: "Kalau besok hidupmu masih persis kayak sekarang, bagian mana yang paling bikin kamu nggak nyaman?",
+                options: [
+                    { text: "Nggak ada arah yang jelas.", type: "explorer" },
+                    { text: "Kerutinan yang ngebosenin.", type: "dreamer" },
+                    { text: "Aku ngerasa stuck, padahal potensiku lebih.", type: "awakening" },
+                    { text: "Aku baru gagal/berhenti, jadi butuh mulai lagi.", type: "restarter" }
+                ]
+            },
+            {
+                q: "Temenmu nanya, 'Lagi sibuk apa sekarang?' Reaksi dalam hatimu?",
+                options: [
+                    { text: "'Banyak ide sih, tapi belum jalan', wkwk.", type: "dreamer" },
+                    { text: "'Lagi nyari-nyari passion aja nih.'", type: "explorer" },
+                    { text: "'Lagi pelan-pelan bangun kebiasaan baru.'", type: "builder" },
+                    { text: "'Lagi masa transisi, doain aja ya.'", type: "restarter" }
+                ]
+            },
+            {
+                q: "Waktu buka sosmed dan lihat pencapaian orang lain, apa yang kamu rasain?",
+                options: [
+                    { text: "Panik pengen ngejar, tapi bingung darimana.", type: "awakening" },
+                    { text: "Terinspirasi buat bikin hal yang sama.", type: "builder" },
+                    { text: "Ngerasa tertinggal karena aku baru mulai dari nol.", type: "restarter" },
+                    { text: "Biasa aja, aku punya jalanku sendiri (meski belum nemu).", type: "explorer" }
+                ]
+            },
+            {
+                q: "Sebenarnya, apa alasan utama yang bikin kamu sering nunda kerjaan?",
+                options: [
+                    { text: "Terlalu banyak mikir 'Gimana kalau gagal?'", type: "awakening" },
+                    { text: "Terlalu banyak pilihan, bingung mau yang mana.", type: "dreamer" },
+                    { text: "Masih ngumpulin energi buat mulai lembaran baru.", type: "restarter" },
+                    { text: "Aku jarang nunda, cuma kadang capek aja.", type: "builder" }
+                ]
+            },
+            {
+                q: "Kalau dikasih 1 bulan libur tanpa beban, kamu bakal ngapain?",
+                options: [
+                    { text: "Mencoba 3-4 hobi baru sekaligus.", type: "dreamer" },
+                    { text: "Fokus bikin satu project sampai jadi.", type: "builder" },
+                    { text: "Detox digital dan nanya ke diri sendiri mau apa.", type: "awakening" },
+                    { text: "Traveling sendirian nyari inspirasi hidup.", type: "explorer" }
+                ]
+            },
+            {
+                q: "Bagaimana kamu mendeskripsikan 'progres' buat kamu saat ini?",
+                options: [
+                    { text: "Bisa konsisten ngelakuin hal kecil tiap hari.", type: "builder" },
+                    { text: "Berani ninggalin hal yang udah nggak works.", type: "restarter" },
+                    { text: "Akhirnya berani ambil satu keputusan.", type: "awakening" },
+                    { text: "Makin tahu apa yang aku NGGAK suka.", type: "explorer" }
+                ]
+            }
+            // *For demo purposes, wrapping at 6 multiple-choice to fit 12-screen flow nicely with the textarea at the end.*
+            // Let's expand it to 11 multiple choice + 1 textarea to match exactly 12 steps as requested.
+        ];
+
+        // Fill remaining questions to make it 11 multiple choice
+        questions.push(
+            { q: "Apa yang paling sering bikin kamu overthinking di malam hari?", options: [{text:"'Gue salah pilih jalan nggak ya?'", type:"explorer"}, {text:"'Kenapa gue cuma wacana doang?'", type:"dreamer"}, {text:"'Gue harusnya bisa lebih jauh dari ini.'", type:"awakening"}, {text:"'Besok harus lebih produktif.'", type:"builder"}] },
+            { q: "Pilih satu kata yang paling mendeskripsikan kepalamu sekarang:", options: [{text:"Berkabut", type:"explorer"}, {text:"Penuh", type:"dreamer"}, {text:"Sadar", type:"awakening"}, {text:"Fokus", type:"builder"}] },
+            { q: "Kalau ada tombol 'Undo' di hidupmu, mau dipencet nggak?", options: [{text:"Iya, pengen ngulang dari titik tertentu.", type:"restarter"}, {text:"Nggak, tapi pengen pause bentar.", type:"explorer"}, {text:"Nggak, jadikan pelajaran aja.", type:"builder"}, {text:"Nggak tahu juga, wkwk.", type:"dreamer"}] },
+            { q: "Berapa persen energimu yang habis buat 'merencanakan' dibanding 'melakukan'?", options: [{text:"90% plan, 10% action", type:"dreamer"}, {text:"50/50 lah, lagi nyoba balance.", type:"explorer"}, {text:"Mulai sadar kebanyakan plan, mau ubah ini.", type:"awakening"}, {text:"Lebih banyak action sekarang.", type:"builder"}] },
+            { q: "Sikapmu terhadap kegagalan saat ini?", options: [{text:"Lagi proses berdamai dan bangkit lagi.", type:"restarter"}, {text:"Jadi evaluasi buat sistem yang lebih baik.", type:"builder"}, {text:"Takut banget, makanya belum mulai.", type:"awakening"}, {text:"Santai aja, namanya juga nyoba-nyoba.", type:"explorer"}] }
+        );
+
+        // Archetype Data
+        const archetypes = {
+            "explorer": {
+                title: "THE EXPLORER",
+                emoji: "🎒",
+                color: "var(--cobalt-blue)",
+                quote: "Kamu bukan nggak punya arah.\nKamu punya terlalu banyak kemungkinan.",
+                dir: "████░░░░░░", act: "██████░░░░", gro: "████████░░",
+                insights: [
+                    "Kamu sebenarnya punya keinginan kuat untuk berkembang, tapi sering bingung mulai dari mana.",
+                    "Masalahmu bukan kurang potensi, tapi takut salah pilih jalan.",
+                    "Kamu sedang berada di fase mengumpulkan data tentang dirimu sendiri."
+                ],
+                keep: "Rasa ingin tahu dan keterbukaanmu mencoba hal baru.",
+                upgrade: "Berhenti menunggu 'panggilan hidup' yang sempurna.",
+                move: "Pilih 1 hal acak minggu ini dan tekuni minimal 3 hari berturut-turut."
+            },
+            "restarter": {
+                title: "THE RESTARTER",
+                emoji: "🚪",
+                color: "var(--orange)",
+                quote: "Bukan mulai dari nol.\nKamu mulai dari pengalaman.",
+                dir: "██████░░░░", act: "████░░░░░░", gro: "█████████░",
+                insights: [
+                    "Kamu baru saja melewati fase akhir dari sesuatu (pekerjaan, hubungan, atau kebiasaan lama).",
+                    "Ada sedikit rasa lelah, tapi di sisi lain kamu tahu ini saatnya lembaran baru.",
+                    "Kamu butuh ruang aman untuk gagal lagi tanpa dihakimi."
+                ],
+                keep: "Keberanianmu untuk melepaskan hal yang tidak lagi relevan.",
+                upgrade: "Maafkan dirimu atas waktu yang kamu anggap 'terbuang'.",
+                move: "Rapikan kamarmu atau workspace-mu. Beri sinyal ke otak bahwa ini awal yang baru."
+            },
+            "builder": {
+                title: "THE BUILDER",
+                emoji: "🧱",
+                color: "var(--lime)",
+                quote: "Kamu tahu arahnya.\nTinggal rawat konsistensinya.",
+                dir: "████████░░", act: "████████░░", gro: "███████░░░",
+                insights: [
+                    "Kamu cukup sadar apa yang harus dilakukan dan perlahan sedang membangunnya.",
+                    "Tantangan utamamu sekarang adalah melawan rasa bosan dari rutinitas.",
+                    "Terkadang kamu terlalu keras pada diri sendiri saat meleset dari target."
+                ],
+                keep: "Disiplin dan sistem yang sudah kamu bangun pelan-pelan.",
+                upgrade: "Jangan lupa istirahat. Burnout adalah musuh utama para builder.",
+                move: "Jadwalkan 1 hari penuh tanpa memikirkan produktivitas sama sekali."
+            },
+            "dreamer": {
+                title: "THE DREAMER",
+                emoji: "✨",
+                color: "var(--lavender)",
+                quote: "Ide di kepalamu luar biasa.\nSekarang waktunya bawa ke dunia nyata.",
+                dir: "██████░░░░", act: "██░░░░░░░░", gro: "████████░░",
+                insights: [
+                    "Kepalamu adalah tempat yang sangat berisik oleh berbagai ide brilian.",
+                    "Kamu sering terjebak dalam perfection paralysis—menunggu siap 100% sebelum rilis.",
+                    "Kamu mudah terdistraksi oleh 'ide baru' tiap kali ide lama mulai terasa sulit dikerjakan."
+                ],
+                keep: "Imajinasi dan visimu yang luas melihat berbagai kemungkinan.",
+                upgrade: "Sadarilah bahwa versi 'jelek' yang selesai lebih baik dari versi 'sempurna' di kepala.",
+                move: "Ambil 1 ide paling sederhana, kerjakan selama 1 jam tanpa ekspektasi bagus."
+            },
+            "awakening": {
+                title: "THE AWAKENING",
+                emoji: "🌅",
+                color: "var(--electric-cyan)",
+                quote: "Kamu mulai sadar.\nKamu nggak bisa terus-terusan begini.",
+                dir: "█████░░░░░", act: "████░░░░░░", gro: "██████████",
+                insights: [
+                    "Ada perasaan 'kegelisahan yang sehat' dalam dirimu belakangan ini.",
+                    "Kamu mulai lelah dengan alasan-alasan yang kamu buat sendiri.",
+                    "Ini adalah fase kritis di mana motivasi untuk berubah sedang memuncak."
+                ],
+                keep: "Kejujuran brutalmu pada diri sendiri saat ini.",
+                upgrade: "Ubah energi gelisah ini menjadi aksi nyata, jangan biarkan menguap jadi overthinking.",
+                move: "Tulis 3 hal yang paling bikin kamu muak saat ini, dan 1 cara kecil mengubahnya."
+            }
+        };
+
+        // State
+        let currentStep = 0;
+        const totalSteps = 12; // 11 MC + 1 Custom
+        let userAnswers = {};
+        let scores = { explorer: 0, restarter: 0, builder: 0, dreamer: 0, awakening: 0 };
+
+        // DOM Elements
+        const heroSection = document.getElementById('hero-section');
+        const assessmentSection = document.getElementById('assessment-section');
+        const resultSection = document.getElementById('result-section');
+        const qContainer = document.getElementById('question-container');
+        const customRef = document.getElementById('custom-reflection');
+        const btnNext = document.getElementById('btn-next');
+        const btnBack = document.getElementById('btn-back');
+        const progressFill = document.getElementById('progress-fill');
+        const progressText = document.getElementById('progress-text');
+
+        function startAssessment() {
+            heroSection.classList.add('hidden');
+            assessmentSection.classList.remove('hidden');
+            renderQuestion();
+        }
+
+        function renderQuestion() {
+            // Reset animations
+            qContainer.classList.remove('slide-up');
+            void qContainer.offsetWidth; // trigger reflow
+            qContainer.classList.add('slide-up');
+
+            // Update Progress
+            let stepDisplay = (currentStep + 1).toString().padStart(2, '0');
+            progressText.innerText = `${stepDisplay} / ${totalSteps}`;
+            progressFill.style.width = `${((currentStep + 1) / totalSteps) * 100}%`;
+
+            // Toggle Back Button
+            btnBack.style.visibility = currentStep > 0 ? 'visible' : 'hidden';
+
+            if (currentStep < 11) {
+                // Multiple Choice
+                customRef.classList.add('hidden');
+                qContainer.classList.remove('hidden');
+                
+                const qData = questions[currentStep];
+                document.getElementById('question-text').innerText = qData.q;
+                
+                const optionsContainer = document.getElementById('options-container');
+                optionsContainer.innerHTML = '';
+                btnNext.disabled = !userAnswers[currentStep]; // Disable if not answered
+
+                qData.options.forEach((opt, index) => {
+                    const optDiv = document.createElement('div');
+                    optDiv.className = 'option-card';
+                    optDiv.innerText = opt.text;
+                    
+                    if (userAnswers[currentStep] === index) {
+                        optDiv.classList.add('selected');
+                    }
+
+                    optDiv.onclick = () => {
+                        // Deselect others
+                        Array.from(optionsContainer.children).forEach(c => c.classList.remove('selected'));
+                        optDiv.classList.add('selected');
+                        userAnswers[currentStep] = index;
+                        btnNext.disabled = false;
+                        
+                        // Auto-next after short delay for smooth UX
+                        setTimeout(nextQuestion, 400);
+                    };
+                    optionsContainer.appendChild(optDiv);
+                });
+                btnNext.innerText = "Next \u2192";
+            } else {
+                // Last Question (Custom Reflection)
+                qContainer.classList.add('hidden');
+                customRef.classList.remove('hidden');
+                btnNext.disabled = false; // Optional, so always enabled
+                btnNext.innerText = "Lihat Hasil \u2192";
+            }
+        }
+
+        function nextQuestion() {
+            if (currentStep < totalSteps - 1) {
+                currentStep++;
+                renderQuestion();
+            } else {
+                calculateResult();
+            }
+        }
+
+        function prevQuestion() {
+            if (currentStep > 0) {
+                currentStep--;
+                renderQuestion();
+            }
+        }
+
+        function calculateResult() {
+            // Reset scores
+            for (let key in scores) scores[key] = 0;
+            
+            // Tally
+            for (let i = 0; i < 11; i++) {
+                if (userAnswers[i] !== undefined) {
+                    let selectedType = questions[i].options[userAnswers[i]].type;
+                    scores[selectedType]++;
+                }
+            }
+
+            // Find Max
+            let finalType = Object.keys(scores).reduce((a, b) => scores[a] > scores[b] ? a : b);
+            showResult(finalType);
+        }
+
+        function showResult(typeKey) {
+            assessmentSection.classList.add('hidden');
+            resultSection.classList.remove('hidden');
+            
+            window.scrollTo(0, 0);
+
+            const data = archetypes[typeKey];
+
+            // Populate Card
+            document.getElementById('rc-bg-color').style.background = data.color;
+            document.getElementById('rc-emoji').innerText = data.emoji;
+            document.getElementById('rc-title').innerText = data.title;
+            // Handle multiline quote
+            document.getElementById('rc-quote').innerHTML = data.quote.replace('\n', '<br>');
+            
+            document.getElementById('stat-dir').innerText = data.dir;
+            document.getElementById('stat-act').innerText = data.act;
+            document.getElementById('stat-gro').innerText = data.gro;
+
+            // Populate Insights
+            const insContainer = document.getElementById('insights-container');
+            insContainer.innerHTML = '';
+            data.insights.forEach((ins, idx) => {
+                insContainer.innerHTML += `
+                    <div class="insight-item">
+                        <div class="insight-num">0${idx+1}</div>
+                        <div>${ins}</div>
+                    </div>
+                `;
+            });
+
+            // Populate Upgrade
+            document.getElementById('uc-keep').innerText = data.keep;
+            document.getElementById('uc-upgrade').innerText = data.upgrade;
+            document.getElementById('uc-move').innerText = data.move;
+        }
+
+        // Feature: Download Result Card
+        function downloadResult() {
+            const captureArea = document.getElementById('capture-area');
+            
+            // html2canvas config for premium output
+            html2canvas(captureArea, {
+                scale: 3, // High resolution
+                useCORS: true,
+                backgroundColor: null
+            }).then(canvas => {
+                const link = document.createElement('a');
+                link.download = 'My_Upgrade_2.0.png';
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+            });
+        }
+
+        // Feature: Web Share API
+        function shareResult() {
+            const title = document.getElementById('rc-title').innerText;
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Upgrade Yourself 2.0',
+                    text: `Ternyata aku adalah ${title}! Coba life direction assessment ini deh buat ngecek kamu di fase mana.`,
+                    url: window.location.href,
+                }).catch(console.error);
+            } else {
+                alert("Browser kamu belum support fitur share langsung. Yuk, screenshot aja result card-nya!");
+            }
+        }
+    </script>
+</body>
+</html>
