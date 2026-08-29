@@ -242,7 +242,7 @@ function submitFeedback() {
     };
 
     // Ini URL API Google Sheets kamu
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbwtrvVgCVW6Agr9iCHfrTKh67uM40msLYu88v9nxdlTk5L_sEnnEcxtfoV378r89lh2/exec';
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbz3IGauKXckTGWs9yAVHXu1cswCOQcWgZKreCsdIkixN-yeXSl119ij7rejwBZUo2S2/exec';
 
     // Menggunakan mode text/plain agar tidak diblokir browser
     fetch(scriptURL, {
