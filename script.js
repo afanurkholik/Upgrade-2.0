@@ -229,7 +229,6 @@ function submitFeedback() {
     btn.innerText = "Menyimpan...";
     btn.disabled = true;
 
-    // Menangkap semua data dari halaman pertama dan hasil assessment
     const payload = {
         name: userData.name || "-",
         contact: userData.contact || "-",
@@ -240,6 +239,26 @@ function submitFeedback() {
         rating: rating,
         feedback: text || "-"
     };
+
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbwtrvVgCVW6Agr9iCHfrTKh67uM40msLYu88v9nxdlTk5L_sEnnEcxtfoV378r89lh2/exec';
+
+    // Trik khusus Google Sheets: kirim sebagai text/plain agar lolos dari blokir CORS
+    fetch(scriptURL, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'text/plain;charset=utf-8',
+        },
+        body: JSON.stringify(payload)
+    })
+    .then(response => {
+        btn.innerText = "Thanks atas feedbacknya! ✨";
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        btn.innerText = "Gagal kirim, tapi santai aja!";
+        btn.disabled = false;
+    });
+}
 
     // Ini URL API Google Sheets kamu
     const scriptURL = 'https://script.google.com/macros/s/AKfycbwtrvVgCVW6Agr9iCHfrTKh67uM40msLYu88v9nxdlTk5L_sEnnEcxtfoV378r89lh2/exec';
