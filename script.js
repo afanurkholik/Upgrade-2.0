@@ -14,7 +14,7 @@ const screens = {
 
 // INITIALIZATION
 document.addEventListener('DOMContentLoaded', () => {
-    // Handle Form Submit (Ini yang menangkap tombol "Oke, mulai")
+    // Menangkap data dari halaman pertama dan memulai assessment
     document.getElementById('onboarding-form').addEventListener('submit', function(e) {
         e.preventDefault();
         userData.name = document.getElementById('user-name').value;
@@ -229,6 +229,7 @@ function submitFeedback() {
     btn.innerText = "Menyimpan...";
     btn.disabled = true;
 
+    // Menangkap semua data dari halaman pertama dan hasil assessment
     const payload = {
         name: userData.name || "-",
         contact: userData.contact || "-",
@@ -240,9 +241,10 @@ function submitFeedback() {
         feedback: text || "-"
     };
 
+    // Ini URL API Google Sheets kamu
     const scriptURL = 'https://script.google.com/macros/s/AKfycbwtrvVgCVW6Agr9iCHfrTKh67uM40msLYu88v9nxdlTk5L_sEnnEcxtfoV378r89lh2/exec';
 
-    // Trik khusus Google Sheets: kirim sebagai text/plain agar lolos dari blokir CORS
+    // Menggunakan mode text/plain agar tidak diblokir browser
     fetch(scriptURL, {
         method: 'POST',
         headers: {
@@ -251,28 +253,6 @@ function submitFeedback() {
         body: JSON.stringify(payload)
     })
     .then(response => {
-        btn.innerText = "Thanks atas feedbacknya! ✨";
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        btn.innerText = "Gagal kirim, tapi santai aja!";
-        btn.disabled = false;
-    });
-}
-
-    // Ini URL API Google Sheets kamu
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbwtrvVgCVW6Agr9iCHfrTKh67uM40msLYu88v9nxdlTk5L_sEnnEcxtfoV378r89lh2/exec';
-
-    // Menggunakan mode 'no-cors' agar tidak diblokir browser
-    fetch(scriptURL, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(payload)
-    })
-    .then(() => {
         btn.innerText = "Thanks atas feedbacknya! ✨";
     })
     .catch(error => {
