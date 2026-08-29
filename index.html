@@ -5,37 +5,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>IT'S TIME TO UPGRADE YOURSELF 2.0 | Walik Labs</title>
     
-    <!-- Fonts: Space Grotesk (Display) & Inter (Body) -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700;800&display=swap" rel="stylesheet">
-    
-    <!-- Libraries -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-    
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+    <!-- GLOBAL CONTROLS (Theme & Language) -->
+    <div class="global-controls">
+        <button id="btn-lang" onclick="switchLanguage()" class="control-btn">EN</button>
+        <button id="btn-theme" onclick="toggleTheme()" class="control-btn">🌙</button>
+    </div>
+
     <!-- SCREEN 1: ONBOARDING -->
     <section id="screen-onboarding" class="screen active">
-        <div class="container tiny-container slide-up">
+        <div class="container tiny-container slide-up fade-content">
             <div class="brand-tag">WALIK LABS</div>
-            <h1 class="title-large">IT'S TIME TO<br>UPGRADE YOURSELF <span class="highlight">2.0</span></h1>
-            <p class="microcopy mb-8">Sebelum mulai... kenalan dulu dikit. Biar hasilnya terasa lebih personal.</p>
+            <h1 class="title-large" data-i18n="title">IT'S TIME TO<br>UPGRADE YOURSELF <span class="highlight">2.0</span></h1>
+            <p class="microcopy mb-8" data-i18n="subtitle">Sebelum mulai... kenalan dulu dikit. Biar hasilnya terasa lebih personal.</p>
             
             <form id="onboarding-form" class="form-group">
-                <input type="text" id="user-name" placeholder="Nama panggilan kamu..." required>
-                <input type="text" id="user-contact" placeholder="Email / WA (Opsional)">
+                <input type="text" id="user-name" placeholder="Nama panggilan kamu..." data-i18n-ph="ph_name" required>
+                
+                <div>
+                    <input type="text" id="user-contact" placeholder="Email atau nomor WA..." data-i18n-ph="ph_contact">
+                    <p id="contact-error" class="error-msg hidden"></p>
+                </div>
+
                 <div class="row">
                     <select id="user-gender" required>
-                        <option value="" disabled selected>Gender...</option>
-                        <option value="Perempuan">Perempuan</option>
-                        <option value="Laki-laki">Laki-laki</option>
+                        <option value="" disabled selected data-i18n="opt_gender">Gender...</option>
+                        <option value="Perempuan" data-i18n="opt_f">Perempuan</option>
+                        <option value="Laki-laki" data-i18n="opt_m">Laki-laki</option>
                     </select>
-                    <input type="number" id="user-age" placeholder="Usia" required min="10" max="99">
+                    <input type="number" id="user-age" placeholder="Usia" data-i18n-ph="ph_age" required min="10" max="99">
                 </div>
-                <p class="privacy-note">Data ini digunakan untuk personalisasi hasil dan pengembangan assessment Walik Labs.</p>
-                <button type="submit" class="btn-primary w-100">Oke, mulai &rarr;</button>
+                <p class="privacy-note" data-i18n="privacy">Data ini digunakan untuk personalisasi hasil dan pengembangan assessment Walik Labs.</p>
+                <button type="submit" class="btn-primary w-100" data-i18n="btn_start">Oke, mulai &rarr;</button>
             </form>
         </div>
     </section>
@@ -48,7 +55,7 @@
                 <div class="progress-bar"><div id="progress-fill" class="progress-fill"></div></div>
             </div>
             
-            <div id="question-container" class="slide-up">
+            <div id="question-container" class="slide-up fade-content">
                 <h2 id="question-text" class="question-text">Loading...</h2>
                 <div id="options-container" class="options-container">
                     <!-- Options injected via JS -->
@@ -59,7 +66,7 @@
 
     <!-- SCREEN 3: LOADING REVEAL -->
     <section id="screen-loading" class="screen">
-        <div class="container text-center loading-container">
+        <div class="container text-center loading-container fade-content">
             <div class="scanner-wrapper">
                 <div class="cute-loader"></div>
             </div>
@@ -69,13 +76,12 @@
 
     <!-- SCREEN 4: RESULT -->
     <section id="screen-result" class="screen">
-        <div class="container slide-up">
-            <p class="section-label text-center">YOUR CURRENT VERSION</p>
+        <div class="container slide-up fade-content">
+            <p class="section-label text-center" data-i18n="res_label">YOUR CURRENT VERSION</p>
             
             <!-- COLLECTIBLE CARD (4:5) -->
             <div class="card-wrapper" id="capture-area">
                 <div id="result-card" class="result-card">
-                    <!-- Decorative BG -->
                     <div class="card-pattern"></div>
                     
                     <div class="rc-header">
@@ -84,7 +90,6 @@
                     </div>
 
                     <div class="rc-character">
-                        <!-- Fallback / Image container -->
                         <div id="rc-char-wrapper" class="char-wrapper">
                             <img id="rc-char-img" src="" alt="Character" onerror="this.style.display='none'">
                             <div id="rc-char-fallback" class="char-fallback">🎒</div>
@@ -98,9 +103,9 @@
 
                     <div class="rc-stats-container">
                         <div class="rc-stats">
-                            <div class="stat-row"><span>DIRECTION</span><span id="stat-dir"></span></div>
-                            <div class="stat-row"><span>ACTION</span><span id="stat-act"></span></div>
-                            <div class="stat-row"><span>GROWTH</span><span id="stat-gro"></span></div>
+                            <div class="stat-row"><span data-i18n="stat_dir">DIRECTION</span><span id="stat-dir"></span></div>
+                            <div class="stat-row"><span data-i18n="stat_act">ACTION</span><span id="stat-act"></span></div>
+                            <div class="stat-row"><span data-i18n="stat_gro">GROWTH</span><span id="stat-gro"></span></div>
                         </div>
                         <div class="rc-progress-logo">
                             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
@@ -108,10 +113,10 @@
                     </div>
                     
                     <div class="rc-footer">
-                        <div class="rc-footer-text">Your next version starts with one small move.</div>
+                        <div class="rc-footer-text" data-i18n="rc_footer">Your next version starts with one small move.</div>
                         <div class="rc-qr-section">
                             <div id="qrcode"></div>
-                            <span>Scan & find<br>your 2.0</span>
+                            <span data-i18n="rc_scan">Scan & find<br>your 2.0</span>
                         </div>
                         <div class="rc-brand-footer">WALIK LABS v0.1</div>
                     </div>
@@ -120,24 +125,22 @@
 
             <!-- ACTION BUTTONS -->
             <div class="action-row mb-8">
-                <button onclick="downloadCard()" class="btn-primary">Download My Card &darr;</button>
-                <button onclick="shareResult()" class="btn-secondary">Share My Result</button>
+                <button onclick="downloadCard()" class="btn-primary" id="btn-dl" data-i18n="btn_dl">Download My Card &darr;</button>
+                <button onclick="shareResult()" class="btn-secondary" data-i18n="btn_share">Share My Result</button>
             </div>
 
             <!-- INSIGHTS -->
             <div class="content-block">
-                <h3 class="block-title">Yang aku tangkap dari jawabanmu...</h3>
+                <h3 class="block-title" data-i18n="insight_title">Yang aku tangkap dari jawabanmu...</h3>
                 <div id="insights-container" class="insights-list"></div>
             </div>
 
             <!-- UPGRADE COMMITMENT -->
             <div class="content-block bg-dark">
                 <h3 class="block-title accent">YOUR NEXT UPGRADE</h3>
-                <p class="microcopy text-light">Nggak perlu upgrade semuanya sekaligus. Pilih satu yang paling mau kamu commit dulu.</p>
+                <p class="microcopy text-light" data-i18n="upgrade_sub">Nggak perlu upgrade semuanya sekaligus. Pilih satu yang paling mau kamu commit dulu.</p>
                 
-                <div id="upgrade-selector" class="upgrade-grid mt-4">
-                    <!-- Cards injected by JS -->
-                </div>
+                <div id="upgrade-selector" class="upgrade-grid mt-4"></div>
 
                 <div id="upgrade-result" class="hidden mt-4">
                     <div class="selected-upgrade-card">
@@ -149,8 +152,8 @@
 
             <!-- FEEDBACK -->
             <div class="content-block">
-                <h3 class="block-title">Boleh jujur?</h3>
-                <p class="microcopy">Tes ini masih versi awal. Kalau ada yang terasa relate, aneh, atau kurang pas—aku pengen tahu.</p>
+                <h3 class="block-title" data-i18n="fb_title">Boleh jujur?</h3>
+                <p class="microcopy" data-i18n="fb_sub">Tes ini masih versi awal. Kalau ada yang terasa relate, aneh, atau kurang pas—aku pengen tahu.</p>
                 
                 <div class="feedback-emojis" id="feedback-rating">
                     <button data-val="5">🔥</button>
@@ -160,11 +163,11 @@
                     <button data-val="1">💀</button>
                 </div>
                 
-                <textarea id="feedback-text" class="form-input mt-4" placeholder="Bagian mana yang paling relate / nggak relate? (Opsional)" rows="3"></textarea>
-                <button onclick="submitFeedback()" class="btn-primary w-100 mt-4" id="btn-submit-feedback">Kirim Feedback &rarr;</button>
+                <textarea id="feedback-text" class="form-input mt-4" placeholder="Bagian mana yang paling relate / nggak relate? (Opsional)" data-i18n-ph="fb_ph" rows="3"></textarea>
+                <button onclick="submitFeedback()" class="btn-primary w-100 mt-4" id="btn-submit-feedback" data-i18n="btn_fb">Kirim Feedback &rarr;</button>
                 
                 <div class="soft-cta mt-8 text-center">
-                    <p>Walik Labs sedang bikin tools kecil untuk membantu kamu menjalani proses upgrade ini.</p>
+                    <p data-i18n="cta_text">Walik Labs sedang bikin tools kecil untuk membantu kamu menjalani proses upgrade ini.</p>
                     <span class="badge">Coming Soon</span>
                 </div>
             </div>
