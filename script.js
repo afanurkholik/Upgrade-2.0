@@ -265,30 +265,4 @@ function submitFeedback() {
     });
 }
 
-    // ==========================================
-    // MODULE: EXPORT DATA TO BACKEND / GOOGLE SHEETS
-    // ==========================================
-    // Untuk menghubungkan ke Google Sheets (via Google Apps Script) atau webhook (Make/Zapier):
-    // Uncomment baris fetch di bawah dan masukkan URL endpoint kamu.
-    
-    /*
-    fetch('URL_WEBHOOK_ATAU_APPS_SCRIPT_KAMU', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-    }).then(res => {
-        btn.innerText = "Thanks atas feedbacknya! ✨";
-        btn.disabled = true;
-    }).catch(err => {
-        console.error(err);
-        btn.innerText = "Gagal kirim, tapi santai aja!";
-    });
-    */
 
-    // Simulasi frontend sukses
-    console.log("DATA COLLECTED FOR WALIK LABS:", payload);
-    setTimeout(() => {
-        btn.innerText = "Thanks atas feedbacknya! \u2728";
-        btn.disabled = true;
-    }, 800);
-}
