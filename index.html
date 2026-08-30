@@ -104,9 +104,8 @@
                         <div class="rc-footer-text" data-i18n="rc_footer">Your next version starts with one small move.</div>
                         <div class="rc-qr-section">
                             <div id="qrcode"></div>
-                            <span data-i18n="rc_scan">Scan & find<br>your 2.0</span>
                         </div>
-                        <div class="rc-brand-footer">WALIK LABS v0.1</div>
+                        <div class="rc-brand-footer">WALIK LABS v0.2</div>
                     </div>
                 </div>
             </div>
@@ -125,10 +124,13 @@
                 <h3 class="block-title accent">YOUR NEXT UPGRADE</h3>
                 <p class="microcopy text-light" data-i18n="upgrade_sub">Nggak perlu upgrade semuanya sekaligus. Pilih satu yang paling mau kamu commit dulu.</p>
                 <div id="upgrade-selector" class="upgrade-grid mt-4"></div>
+                
                 <div id="upgrade-result" class="hidden mt-4">
                     <div class="selected-upgrade-card">
                         <h4 id="ur-title">TITLE</h4>
                         <p id="ur-action" class="mt-2">Action text</p>
+                        <!-- Tombol Pilih Ulang -->
+                        <button onclick="resetUpgrade()" class="btn-secondary mt-4" style="padding: 8px 20px; font-size: 0.85rem;" data-i18n="btn_reselect">Pilih Ulang ↺</button>
                     </div>
                 </div>
             </div>
@@ -145,11 +147,17 @@
                 </div>
                 <textarea id="feedback-text" class="form-input mt-4" placeholder="Bagian mana yang paling relate / nggak relate? (Opsional)" data-i18n-ph="fb_ph" rows="3"></textarea>
                 <button onclick="submitFeedback()" class="btn-primary w-100 mt-4" id="btn-submit-feedback" data-i18n="btn_fb">Kirim Feedback &rarr;</button>
+                
+                <div class="soft-cta mt-8 text-center">
+                    <p data-i18n="cta_text">Walik Labs sedang bikin tools kecil untuk membantu kamu menjalani proses upgrade ini.</p>
+                    <span class="badge">Coming Soon</span>
+                    <!-- Tombol Mulai Lagi -->
+                    <button onclick="location.reload()" class="btn-secondary w-100" style="margin-top: 2rem;" data-i18n="btn_restart">Mulai Lagi ↺</button>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- HANYA PANGGIL 1 FILE JS -->
     <script src="script.js"></script>
 </body>
 </html>
