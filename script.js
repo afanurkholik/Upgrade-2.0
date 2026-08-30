@@ -35,8 +35,106 @@ const questionsData = [
             { text: "Terinspirasi buat ngewujudin ide-ideku.", text_en: "Inspired to actually realize my ideas.", type: "dreamer" },
             { text: "Jadi pengen push diri sendiri biar lebih disiplin.", text_en: "Makes me want to push myself to be more disciplined.", type: "builder" }
         ]
+    },
+    {
+        q: "Biasanya, apa yang bikin kamu nunda ngelakuin sesuatu yang penting?",
+        q_en: "Usually, what makes you procrastinate on something important?",
+        options: [
+            { text: "Terlalu banyak mikir 'Gimana kalau nanti salah?'", text_en: "Thinking too much: 'What if I make a mistake?'", type: "explorer" },
+            { text: "Nunggu momen atau mood yang 'pas'.", text_en: "Waiting for the 'right' moment or mood.", type: "dreamer" },
+            { text: "Masih ngumpulin energi mental buat bangkit.", text_en: "Still gathering mental energy to rise up.", type: "restarter" },
+            { text: "Jarang nunda sih, cuma kadang capek fisik aja.", text_en: "Rarely procrastinate, just physically tired sometimes.", type: "builder" },
+            { text: "Takut banget gagal, makanya mending nggak usah mulai.", text_en: "So afraid of failing, better not to start.", type: "awakening" }
+        ]
+    },
+    {
+        q: "Kalau kamu dikasih libur 1 bulan tanpa beban finansial, kamu bakal ngapain?",
+        q_en: "If given 1 month off with zero financial stress, what would you do?",
+        options: [
+            { text: "Nyoba 3-4 hobi baru sekaligus.", text_en: "Try 3-4 new hobbies all at once.", type: "dreamer" },
+            { text: "Traveling ke tempat baru buat nyari perspektif.", text_en: "Travel somewhere new to find fresh perspectives.", type: "explorer" },
+            { text: "Fokus ngembangin satu skill spesifik.", text_en: "Focus on developing one specific skill.", type: "builder" },
+            { text: "Detox total dan nanya ke diri sendiri sebenernya mau apa.", text_en: "Total detox and ask myself what I actually want.", type: "awakening" },
+            { text: "Beres-beres masa lalu dan siapin rencana baru.", text_en: "Clean up past baggage and set a new plan.", type: "restarter" }
+        ]
+    },
+    {
+        q: "Pilih kalimat yang paling cocok buat mendeskripsikan kepalamu belakangan ini:",
+        q_en: "Choose the phrase that best describes your mind lately:",
+        options: [
+            { text: "Penuh dengan tanda tanya.", text_en: "Filled with endless question marks.", type: "explorer" },
+            { text: "Berisik sama ide, tapi tangannya diam.", text_en: "Noisy with ideas, but hands remain still.", type: "dreamer" },
+            { text: "Fokus, tapi lumayan capek.", text_en: "Focused, but quite exhausted.", type: "builder" },
+            { text: "Lagi memproses banyak hal yang baru selesai.", text_en: "Processing a lot of things that just ended.", type: "restarter" },
+            { text: "Mulai terbangun dari 'autopilot'.", text_en: "Starting to wake up from 'autopilot'.", type: "awakening" }
+        ]
+    },
+    {
+        q: "Gimana caramu ngeliat 'kegagalan' saat ini?",
+        q_en: "How do you view 'failure' right now?",
+        options: [
+            { text: "Jadi evaluasi buat bikin sistem yang lebih bener.", text_en: "An evaluation to build a better system.", type: "builder" },
+            { text: "Bikin takut banget, sampai bikin aku overthinking.", text_en: "Terrifying, makes me overthink constantly.", type: "awakening" },
+            { text: "Lagi proses nerima itu dan nyoba berdiri lagi.", text_en: "In the process of accepting it and trying to stand again.", type: "restarter" },
+            { text: "Santai aja, kan emang lagi fase nyoba-nyoba.", text_en: "Relaxed, I'm just in the trial phase anyway.", type: "explorer" },
+            { text: "Yah... dijadiin bahan overthinking sebelum tidur.", text_en: "Well... fuel for overthinking before sleep.", type: "dreamer" }
+        ]
+    },
+    {
+        q: "Berapa persen energimu yang habis buat 'mikirin rencana' dibanding 'ngelakuinnya'?",
+        q_en: "What % of your energy goes to 'planning' vs 'doing'?",
+        options: [
+            { text: "90% mikir, 10% jalan. Perfect paralysis.", text_en: "90% thinking, 10% doing. Perfect paralysis.", type: "dreamer" },
+            { text: "Mulai sadar kebanyakan mikir, mau aku ubah.", text_en: "Realizing I overthink too much, want to change it.", type: "awakening" },
+            { text: "50/50, masih nyari balancing-nya.", text_en: "50/50, still finding the balance.", type: "explorer" },
+            { text: "Udah lebih banyak eksekusinya sekarang.", text_en: "More execution than planning now.", type: "builder" },
+            { text: "Lagi nggak banyak rencana, cuma mau survive step by step.", text_en: "Not much planning, just trying to survive step by step.", type: "restarter" }
+        ]
+    },
+    {
+        q: "Hal kecil apa yang bikin kamu ngerasa 'berkembang' akhir-akhir ini?",
+        q_en: "What small thing makes you feel like you are 'growing' lately?",
+        options: [
+            { text: "Bisa ngelakuin rutinitas meskipun lagi males.", text_en: "Able to stick to routines even when feeling lazy.", type: "builder" },
+            { text: "Berani ngelepasin hal yang emang udah nggak cocok.", text_en: "Brave enough to let go of what no longer fits.", type: "restarter" },
+            { text: "Makin tahu dengan jelas apa yang NGGAK aku suka.", text_en: "Knowing more clearly what I DO NOT like.", type: "explorer" },
+            { text: "Berani mengakui kalau aku butuh berubah.", text_en: "Daring to admit that I need to change.", type: "awakening" },
+            { text: "Akhirnya ngerjain satu ide dari sekian banyak draft.", text_en: "Finally working on one idea out of many drafts.", type: "dreamer" }
+        ]
+    },
+    {
+        q: "Menurutmu, apa yang paling kamu butuhin buat versi 2.0 kamu?",
+        q_en: "In your opinion, what do you need most for your 2.0 version?",
+        options: [
+            { text: "Disiplin. Bukan motivasi.", text_en: "Discipline. Not motivation.", type: "builder" },
+            { text: "Keberanian buat nutup mata dan milih satu aja.", text_en: "Courage to close my eyes and pick just one.", type: "explorer" },
+            { text: "Waktu buat menyembuhkan diri dan reset.", text_en: "Time to heal and reset.", type: "restarter" },
+            { text: "Eksekusi yang jelek nggak apa-apa, asal rilis.", text_en: "Imperfect execution is fine, as long as it releases.", type: "dreamer" },
+            { text: "Tamparan realita biar aku berhenti bikin alasan.", text_en: "A reality check so I stop making excuses.", type: "awakening" }
+        ]
+    },
+    {
+        q: "Kalau dikasih tombol 'Undo' di hidupmu, kamu bakal...",
+        q_en: "If given an 'Undo' button in life, you would...",
+        options: [
+            { text: "Pencet. Pengen ngulang dari titik tertentu.", text_en: "Press it. Want to restart from a certain point.", type: "restarter" },
+            { text: "Nggak pencet. Aku cuma butuh berani ngadepin sekarang.", text_en: "Don't press. I just need to face the present bravely.", type: "awakening" },
+            { text: "Nggak. Jadikan pelajaran aja buat bangun fondasi.", text_en: "No. Just a lesson to build a foundation.", type: "builder" },
+            { text: "Nggak pencet, tapi pengen pause bentar.", text_en: "Don't press, but want to pause for a bit.", type: "explorer" },
+            { text: "Nggak tahu deh wkwk, bingung.", text_en: "I don't even know haha, confused.", type: "dreamer" }
+        ]
+    },
+    {
+        q: "Terakhir. Kalau kamu harus ngomong sama dirimu sendiri besok pagi, apa pesannya?",
+        q_en: "Lastly. If you had to say one message to yourself tomorrow morning, what is it?",
+        options: [
+            { text: "'Coba satu aja. Nggak usah mikirin semuanya.'", text_en: "'Try just one thing. Don't worry about everything.'", type: "explorer" },
+            { text: "'Kerjain ide itu 15 menit aja, pliss.'", text_en: "'Work on that idea for just 15 minutes, please.'", type: "dreamer" },
+            { text: "'Nggak papa mulai dari awal. Pelan-pelan aja.'", text_en: "'It's okay to start over. Just take it slow.'", type: "restarter" },
+            { text: "'Hari ini kita lanjut bangun bata-bata itu ya.'", text_en: "'Today we continue building those bricks.'", type: "builder" },
+            { text: "'Udah cukup diamnya. Waktunya gerak.'", text_en: "'Enough standing still. Time to move.'", type: "awakening" }
+        ]
     }
-    // (Kamu bisa tambahkan pertanyaan lain sesuai format di atas jika mau)
 ];
 
 const archetypeData = {
@@ -83,8 +181,12 @@ const archetypeData = {
 };
 
 const upgradeOptions = [
-    { title: "🧠 CLEAR MY HEAD", action: "Tulis isi kepalamu 10 menit.", action_en: "Write your thoughts for 10 mins." },
-    { title: "⚡ TAKE ACTION", action: "Pilih satu tugas, kerjakan 15 menit sekarang.", action_en: "Pick one task, do it for 15 mins now." }
+    { title: "🧠 CLEAR MY HEAD", action: "Tulis isi kepalamu 10 menit di kertas, lalu buang/simpan.", action_en: "Write your thoughts on paper for 10 mins, then keep or discard." },
+    { title: "🎯 PICK ONE DIRECTION", action: "Tulis 3 ide, coret 2, dan komit 7 hari buat 1 ide sisa.", action_en: "Write 3 ideas, cross out 2, and commit 7 days to the last one." },
+    { title: "⚡ TAKE ACTION", action: "Pilih satu tugas yang tertunda, kerjakan 15 menit sekarang.", action_en: "Pick one delayed task, do it for 15 mins now." },
+    { title: "🧱 BUILD A SKILL", action: "Tentukan 1 materi belajar (buku/video) dan pelajari 20 menit malam ini.", action_en: "Pick 1 learning material and study it for 20 mins tonight." },
+    { title: "🌱 START AGAIN", action: "Rapikan mejamu. Beri sinyal ke otak bahwa ini ruang yang baru.", action_en: "Clean your desk. Signal to your brain that this is a fresh space." },
+    { title: "🧘 SLOW DOWN", action: "Matikan notifikasi HP selama 2 jam malam ini. Nggak usah mikirin progres.", action_en: "Turn off notifications for 2 hours tonight. Don't worry about progress." }
 ];
 
 const uiTranslations = {
@@ -98,9 +200,9 @@ const uiTranslations = {
         rc_footer: "Your next version starts with one small move.", rc_scan: "Scan & find<br>your 2.0",
         btn_dl: "Download My Card &darr;", btn_share: "Share My Result",
         insight_title: "Yang aku tangkap dari jawabanmu...",
-        upgrade_sub: "Pilih satu yang paling mau kamu commit dulu.",
+        upgrade_sub: "Nggak perlu upgrade semuanya sekaligus. Pilih satu yang paling mau kamu commit dulu.",
         fb_title: "Boleh jujur?", fb_sub: "Kalau ada yang terasa relate, aneh, atau kurang pas—aku pengen tahu.",
-        btn_fb: "Kirim Feedback &rarr;", err_contact: "Masukkan email (pakai @) atau no WA valid."
+        btn_fb: "Kirim Feedback &rarr;", err_contact: "Masukkan email (pakai @) atau no WA (angka saja) yang valid."
     },
     en: {
         title: "IT'S TIME TO<br>UPGRADE YOURSELF <span class=\"highlight\">2.0</span>",
@@ -112,7 +214,7 @@ const uiTranslations = {
         rc_footer: "Your next version starts with one small move.", rc_scan: "Scan & find<br>your 2.0",
         btn_dl: "Download My Card &darr;", btn_share: "Share My Result",
         insight_title: "Here is what I gathered...",
-        upgrade_sub: "Pick one you want to commit to first.",
+        upgrade_sub: "No need to upgrade all at once. Pick one you want to commit to first.",
         fb_title: "Can we be honest?", fb_sub: "If anything felt weird or off—I'd love to know.",
         btn_fb: "Send Feedback &rarr;", err_contact: "Enter a valid email or WA number."
     }
@@ -319,7 +421,7 @@ function shareResult() {
 }
 
 // ==========================================
-// 3. PENGIRIMAN DATA KE GOOGLE SHEETS
+// 3. PENGIRIMAN DATA KE GOOGLE SHEETS (ANTI GAGAL)
 // ==========================================
 
 function submitFeedback() {
@@ -331,10 +433,10 @@ function submitFeedback() {
     btn.innerText = currentLang === 'id' ? "Menyimpan..." : "Saving...";
     btn.disabled = true;
 
-    // GANTI URL DI BAWAH INI DENGAN URL APPS SCRIPT-MU YANG BARU
+    // URL API GOOGLE SHEETS KAMU
     const scriptURL = 'https://script.google.com/macros/s/AKfycbwtrvVgCVW6Agr9iCHfrTKh67uM40msLYu88v9nxdlTk5L_sEnnEcxtfoV378r89lh2/exec';
 
-    // Menggunakan URLSearchParams (Metode Paling Ampuh untuk Google Sheets)
+    // Menggunakan URLSearchParams agar lolos pengamanan Google
     const payload = new URLSearchParams({
         name: userData.name || "-",
         contact: userData.contact || "-",
@@ -348,9 +450,11 @@ function submitFeedback() {
 
     fetch(scriptURL, {
         method: 'POST',
+        mode: 'no-cors', // Mencegah browser nge-block request ke Google Sheets
         body: payload 
     })
-    .then(response => {
+    .then(() => {
+        // Karena no-cors, browser selalu anggap berhasil walau respons aslinya tidak bisa dibaca
         btn.innerText = currentLang === 'id' ? "Thanks atas feedbacknya! ✨" : "Thanks for the feedback! ✨";
     })
     .catch(error => {
