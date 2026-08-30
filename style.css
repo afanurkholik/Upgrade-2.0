@@ -77,7 +77,8 @@ button:active { transform: scale(0.98); }
 @keyframes gradientMove { 0% {background-position: 0% 50%} 50% {background-position: 100% 50%} 100% {background-position: 0% 50%} }
 .result-card > * { position: relative; z-index: 1; }
 
-.rc-header { text-align: center; margin-bottom: 1rem; }
+.rc-brand { position: absolute; top: 22px; left: 24px; font-family: var(--font-display); font-size: 0.7rem; font-weight: 800; letter-spacing: 1.5px; opacity: 0.7; z-index: 2; }
+.rc-header { text-align: center; margin-top: 28px; margin-bottom: 1rem; }
 .rc-user-name { font-family: var(--font-display); font-size: 1.5rem; font-weight: 800; letter-spacing: -0.5px; text-transform: uppercase; margin-bottom: 2px; }
 .rc-subtitle { font-family: var(--font-display); font-size: 0.75rem; font-weight: 700; opacity: 0.7; letter-spacing: 1px; }
 
@@ -90,19 +91,19 @@ button:active { transform: scale(0.98); }
 .rc-title { font-family: var(--font-display); font-size: 2.5rem; font-weight: 800; line-height: 1; letter-spacing: -1px; color: var(--card-accent); text-transform: uppercase; text-shadow: 0 2px 10px rgba(255,255,255,0.5); }
 .rc-quote { font-size: 0.85rem; font-style: italic; opacity: 0.8; margin-top: 4px; font-weight: 500; }
 
-.rc-stats-container { display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.4); padding: 1rem; border-radius: 16px; border: 1px solid rgba(255,255,255,0.6); margin-bottom: 1rem; box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
+.rc-stats-container { display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.4); padding: 1rem; border-radius: 16px; border: 1px solid rgba(255,255,255,0.6); margin-bottom: 1.25rem; box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
 .rc-stats { flex: 1; display: flex; flex-direction: column; gap: 6px; }
 .stat-row { display: flex; justify-content: space-between; font-family: var(--font-display); font-size: 0.75rem; font-weight: 700; }
 .stat-row span:last-child { font-family: monospace; letter-spacing: 1px; color: var(--card-accent); }
 .rc-progress-logo { width: 40px; height: 40px; background: rgba(255,255,255,0.8); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--card-accent); }
 
-/* QR SECTION IN CARD */
-.rc-footer-invite { display: flex; align-items: center; gap: 12px; background: rgba(255,255,255,0.5); padding: 10px 12px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.6); }
-.rc-invite-text { flex: 1; text-align: right; line-height: 1.2; }
+/* QR SECTION IN CARD - CENTERED & NEAT */
+.rc-footer-invite { display: flex; align-items: center; justify-content: center; gap: 14px; background: rgba(255,255,255,0.65); padding: 10px 20px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.8); margin: 0 auto; width: fit-content; max-width: 100%; box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
+#qrcode { width: 44px; height: 44px; background: white; padding: 2px; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+#qrcode img { width: 100%; height: 100%; }
+.rc-invite-text { text-align: left; line-height: 1.2; }
 .rc-invite-text strong { display: block; font-family: var(--font-display); font-size: 0.75rem; color: var(--text-main); margin-bottom: 2px; }
 .rc-invite-text span { font-size: 0.65rem; color: var(--text-main); opacity: 0.8; font-weight: 500; }
-#qrcode { width: 44px; height: 44px; background: white; padding: 2px; border-radius: 6px; flex-shrink: 0; }
-#qrcode img { width: 100%; height: 100%; }
 
 .content-block { background: var(--white); padding: 2rem; border-radius: 24px; margin-bottom: 1.5rem; box-shadow: 0 4px 20px rgba(0,0,0,0.03); }
 .content-block.bg-dark { background: var(--text-main); color: var(--bg-light); }
