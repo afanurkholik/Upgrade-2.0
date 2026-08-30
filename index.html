@@ -25,7 +25,7 @@
             <p class="microcopy mb-8" data-i18n="subtitle">Sebelum mulai... kenalan dulu dikit. Biar hasilnya terasa lebih personal.</p>
             
             <form id="onboarding-form" class="form-group">
-                <input type="text" id="user-name" placeholder="Nama panggilan kamu..." data-i18n-ph="ph_name" required>
+                <input type="text" id="user-name" placeholder="Nama panggilan kamu (misal: afa)..." data-i18n-ph="ph_name" required>
                 <div>
                     <input type="text" id="user-contact" placeholder="Email atau nomor WA..." data-i18n-ph="ph_contact">
                     <p id="contact-error" class="error-msg hidden"></p>
@@ -52,19 +52,15 @@
                 <div class="progress-bar"><div id="progress-fill" class="progress-fill"></div></div>
             </div>
             
-            <!-- Multiple Choice -->
             <div id="question-container" class="slide-up fade-content">
                 <h2 id="question-text" class="question-text">Loading...</h2>
                 <div id="options-container" class="options-container"></div>
             </div>
 
-            <!-- Custom Story (Question 13) -->
             <div id="custom-question-container" class="hidden slide-up fade-content">
                 <h2 class="question-text" data-i18n="cq_title">Oke, sekarang giliran kamu ngomong.</h2>
-                <p class="microcopy mb-6" style="margin-bottom: 24px;" data-i18n="cq_sub">Kalau ada satu hal tentang hidupmu yang belum sempat ditanya di sini, ceritain aja.</p>
-                
+                <p class="microcopy mb-6" data-i18n="cq_sub">Kalau ada satu hal tentang hidupmu yang belum sempat ditanya di sini, ceritain aja.</p>
                 <textarea id="custom-story" class="form-input journal-card" data-i18n-ph="cq_ph" placeholder="Nggak harus rapi. Tulis aja apa yang lagi ada di kepala kamu. (Opsional)" rows="6"></textarea>
-                
                 <button onclick="submitCustomStory()" class="btn-primary w-100 mt-4" data-i18n="btn_finish">Lihat Hasil &rarr;</button>
             </div>
         </div>
@@ -81,13 +77,14 @@
     <!-- SCREEN 4: RESULT -->
     <section id="screen-result" class="screen">
         <div class="container slide-up fade-content">
+            <p class="section-label text-center" data-i18n="res_label" style="font-family: var(--font-display); font-weight: 700; color: var(--text-muted); margin-bottom: 12px; letter-spacing: 1px;">ASSESSMENT RESULT</p>
             
             <div class="card-wrapper" id="capture-area">
                 <div id="result-card" class="result-card">
                     <div class="card-pattern"></div>
                     <div class="rc-header">
-                        <div class="rc-brand">IT'S TIME TO UPGRADE YOURSELF 2.0</div>
-                        <div class="rc-username" id="rc-headline">APPARENTLY, I'M...</div>
+                        <div class="rc-user-name" id="rc-name-display">NAME</div>
+                        <div class="rc-subtitle" id="rc-headline">APPARENTLY, I'M...</div>
                     </div>
                     <div class="rc-character">
                         <div id="rc-char-wrapper" class="char-wrapper">
@@ -106,17 +103,15 @@
                             <div class="stat-row"><span data-i18n="stat_gro">GROWTH</span><span id="stat-gro"></span></div>
                         </div>
                         <div class="rc-progress-logo">
-                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
                         </div>
                     </div>
-                    <div class="rc-footer">
-                        <div class="rc-footer-text">
-                            <span style="font-size: 1.15em; font-weight: 700; display: block; margin-bottom: 2px;" data-i18n="rc_ask">What's your current version?</span>
-                            <span data-i18n="rc_scan">Take the assessment & find your 2.0.</span>
+                    <div class="rc-footer-invite">
+                        <div class="rc-invite-text">
+                            <strong data-i18n="rc_ask">What's your current version?</strong>
+                            <span data-i18n="rc_scan">Take the test at Walik Labs.</span>
                         </div>
-                        <div class="rc-qr-section">
-                            <div id="qrcode"></div>
-                        </div>
+                        <div id="qrcode"></div>
                     </div>
                 </div>
             </div>
@@ -134,7 +129,6 @@
             <div class="content-block bg-dark">
                 <h3 class="block-title accent">YOUR NEXT UPGRADE</h3>
                 <p class="microcopy text-light" data-i18n="upgrade_sub">Nggak perlu upgrade semuanya sekaligus. Pilih satu yang paling mau kamu commit dulu.</p>
-                
                 <div id="upgrade-selector" class="upgrade-grid mt-4 transition-container"></div>
                 
                 <div id="upgrade-result" class="mt-4 transition-container hidden">
@@ -149,13 +143,25 @@
             <div class="content-block">
                 <h3 class="block-title" data-i18n="fb_title">Boleh jujur?</h3>
                 <p class="microcopy" data-i18n="fb_sub">Tes ini masih versi awal. Kalau ada yang terasa relate, aneh, atau kurang pas—aku pengen tahu.</p>
-                <div class="feedback-emojis" id="feedback-rating">
-                    <button data-val="5">🔥</button>
-                    <button data-val="4">🙂</button>
-                    <button data-val="3">🤔</button>
-                    <button data-val="2">😐</button>
-                    <button data-val="1">💀</button>
+                
+                <!-- NEW LIQUID PIPE SLIDER -->
+                <div class="liquid-container" id="liquid-pipe-container">
+                    <div class="liquid-pipe">
+                        <div class="liquid-fill" id="liquid-fill"></div>
+                        <div class="liquid-steps">
+                            <div class="liquid-step" onclick="setRating(1)"></div>
+                            <div class="liquid-step" onclick="setRating(2)"></div>
+                            <div class="liquid-step" onclick="setRating(3)"></div>
+                            <div class="liquid-step" onclick="setRating(4)"></div>
+                            <div class="liquid-step" onclick="setRating(5)"></div>
+                        </div>
+                    </div>
+                    <div class="rating-labels">
+                        <span data-i18n="rate_low">Kurang pas 💀</span>
+                        <span data-i18n="rate_high">Relate banget! 🔥</span>
+                    </div>
                 </div>
+                
                 <textarea id="feedback-text" class="form-input mt-4" placeholder="Bagian mana yang paling relate / nggak relate? (Opsional)" data-i18n-ph="fb_ph" rows="3"></textarea>
                 <button onclick="submitFeedback()" class="btn-primary w-100 mt-4" id="btn-submit-feedback" data-i18n="btn_fb">Kirim Feedback &rarr;</button>
                 
