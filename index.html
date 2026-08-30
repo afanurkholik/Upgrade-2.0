@@ -82,36 +82,45 @@
             <div class="card-wrapper" id="capture-area">
                 <div id="result-card" class="result-card">
                     <div class="card-pattern"></div>
+                    
+                    <!-- BRAND DI KIRI ATAS -->
+                    <div class="rc-brand" data-i18n="rc_brand">WALIK LABS</div>
+                    
                     <div class="rc-header">
                         <div class="rc-user-name" id="rc-name-display">NAME</div>
-                        <div class="rc-subtitle" id="rc-headline">APPARENTLY, I'M...</div>
+                        <div class="rc-subtitle" id="rc-headline" data-i18n="rc_headline">TERNYATA AKU...</div>
                     </div>
+                    
                     <div class="rc-character">
                         <div id="rc-char-wrapper" class="char-wrapper">
                             <img id="rc-char-img" src="" alt="Character" onerror="this.style.display='none'">
                             <div id="rc-char-fallback" class="char-fallback">🎒</div>
                         </div>
                     </div>
+                    
                     <div class="rc-identity">
                         <h2 id="rc-archetype" class="rc-title">THE EXPLORER</h2>
                         <p id="rc-quote" class="rc-quote">"Still figuring it out."</p>
                     </div>
+                    
                     <div class="rc-stats-container">
                         <div class="rc-stats">
-                            <div class="stat-row"><span data-i18n="stat_dir">DIRECTION</span><span id="stat-dir"></span></div>
-                            <div class="stat-row"><span data-i18n="stat_act">ACTION</span><span id="stat-act"></span></div>
-                            <div class="stat-row"><span data-i18n="stat_gro">GROWTH</span><span id="stat-gro"></span></div>
+                            <div class="stat-row"><span data-i18n="stat_dir">ARAH</span><span id="stat-dir"></span></div>
+                            <div class="stat-row"><span data-i18n="stat_act">AKSI</span><span id="stat-act"></span></div>
+                            <div class="stat-row"><span data-i18n="stat_gro">TUMBUH</span><span id="stat-gro"></span></div>
                         </div>
                         <div class="rc-progress-logo">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
                         </div>
                     </div>
+                    
+                    <!-- QR SECTION KOTAK TENGAH RAPI -->
                     <div class="rc-footer-invite">
-                        <div class="rc-invite-text">
-                            <strong data-i18n="rc_ask">What's your current version?</strong>
-                            <span data-i18n="rc_scan">Take the test at Walik Labs.</span>
-                        </div>
                         <div id="qrcode"></div>
+                        <div class="rc-invite-text">
+                            <strong data-i18n="rc_ask">Versi 2.0 kamu apa?</strong>
+                            <span data-i18n="rc_scan">Scan & tes di Walik Labs.</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -144,7 +153,6 @@
                 <h3 class="block-title" data-i18n="fb_title">Boleh jujur?</h3>
                 <p class="microcopy" data-i18n="fb_sub">Tes ini masih versi awal. Kalau ada yang terasa relate, aneh, atau kurang pas—aku pengen tahu.</p>
                 
-                <!-- NEW LIQUID PIPE SLIDER -->
                 <div class="liquid-container" id="liquid-pipe-container">
                     <div class="liquid-pipe">
                         <div class="liquid-fill" id="liquid-fill"></div>
