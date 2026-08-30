@@ -66,26 +66,30 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('onboarding-form').addEventListener('submit', function(e) {
         e.preventDefault();
         
-        // VALIDASI KONTAK
-        const contactInput = document.getElementById('user-contact').value.trim();
+        // VALIDASI KONTAK (Dibuat aman dari crash)
+        const contactInput = document.getElementById('user-contact') ? document.getElementById('user-contact').value.trim() : '';
         const errEl = document.getElementById('contact-error');
-        errEl.classList.add('hidden');
+        if (errEl) errEl.classList.add('hidden');
 
         if (contactInput !== '') {
             const isEmail = contactInput.includes('@') && contactInput.includes('.');
             const isWA = /^\d{10,14}$/.test(contactInput);
             
             if (!isEmail && !isWA) {
-                errEl.innerText = uiTranslations[currentLang].err_contact;
-                errEl.classList.remove('hidden');
+                if (errEl) {
+                    errEl.innerText = uiTranslations[currentLang].err_contact;
+                    errEl.classList.remove('hidden');
+                } else {
+                    alert(uiTranslations[currentLang].err_contact);
+                }
                 return; // Stop form submit jika tidak valid
             }
         }
 
-        userData.name = document.getElementById('user-name').value;
+        userData.name = document.getElementById('user-name') ? document.getElementById('user-name').value : '';
         userData.contact = contactInput;
-        userData.gender = document.getElementById('user-gender').value;
-        userData.age = document.getElementById('user-age').value;
+        userData.gender = document.getElementById('user-gender') ? document.getElementById('user-gender').value : '';
+        userData.age = document.getElementById('user-age') ? document.getElementById('user-age').value : '';
         
         switchScreen('assessment');
         renderQuestion();
@@ -107,12 +111,14 @@ document.addEventListener('DOMContentLoaded', () => {
 function toggleTheme() {
     isDarkMode = !isDarkMode;
     document.body.classList.toggle('dark-mode');
-    document.getElementById('btn-theme').innerText = isDarkMode ? '☀️' : '🌙';
+    const btnTheme = document.getElementById('btn-theme');
+    if (btnTheme) btnTheme.innerText = isDarkMode ? '☀️' : '🌙';
 }
 
 function switchLanguage() {
     currentLang = currentLang === 'id' ? 'en' : 'id';
-    document.getElementById('btn-lang').innerText = currentLang === 'id' ? 'EN' : 'ID';
+    const btnLang = document.getElementById('btn-lang');
+    if (btnLang) btnLang.innerText = currentLang === 'id' ? 'EN' : 'ID';
     
     // Aesthetic Fade Out
     const fadeEls = document.querySelectorAll('.fade-content');
@@ -130,10 +136,10 @@ function switchLanguage() {
         });
 
         // Update Dynamic UI based on current screen
-        if (screens.assessment.classList.contains('active')) renderQuestion();
-        if (screens.result.classList.contains('active')) {
+        if (screens.assessment && screens.assessment.classList.contains('active')) renderQuestion();
+        if (screens.result && screens.result.classList.contains('active')) {
             populateUpgrades();
-            buildResultScreen(); // Re-render result texts
+            buildResultScreen(); 
         }
         
         // Aesthetic Fade In
@@ -144,12 +150,16 @@ function switchLanguage() {
 // NAVIGATION
 function switchScreen(screenName) {
     Object.values(screens).forEach(s => {
-        s.classList.remove('active');
-        setTimeout(() => s.style.display = 'none', 400); 
+        if (s) {
+            s.classList.remove('active');
+            setTimeout(() => s.style.display = 'none', 400); 
+        }
     });
     setTimeout(() => {
-        screens[screenName].style.display = 'block';
-        setTimeout(() => screens[screenName].classList.add('active'), 50);
+        if (screens[screenName]) {
+            screens[screenName].style.display = 'block';
+            setTimeout(() => screens[screenName].classList.add('active'), 50);
+        }
     }, 400);
 }
 
@@ -164,15 +174,15 @@ function renderQuestion() {
     void container.offsetWidth; 
     container.classList.add('slide-up');
 
-    // Gunakan terjemahan dari questions.js
-    document.getElementById('question-text').innerText = currentLang === 'en' ? (q.q_en || q.q) : q.q;
+    // Fallback yang aman jika bahasa Inggris belum ada
+    document.getElementById('question-text').innerText = (currentLang === 'en' && q.q_en) ? q.q_en : q.q;
     const optionsContainer = document.getElementById('options-container');
     optionsContainer.innerHTML = '';
     
     q.options.forEach(opt => {
         const btn = document.createElement('div');
         btn.className = 'option-card';
-        btn.innerText = currentLang === 'en' ? (opt.text_en || opt.text) : opt.text;
+        btn.innerText = (currentLang === 'en' && opt.text_en) ? opt.text_en : opt.text;
         btn.onclick = () => handleAnswer(opt.type);
         optionsContainer.appendChild(btn);
     });
@@ -225,7 +235,7 @@ function buildResultScreen() {
     
     document.getElementById('rc-name').innerText = userData.name;
     document.getElementById('rc-archetype').innerText = data.title;
-    document.getElementById('rc-quote').innerText = currentLang === 'en' ? `"${data.quote_en || data.quote}"` : `"${data.quote}"`;
+    document.getElementById('rc-quote').innerText = (currentLang === 'en' && data.quote_en) ? `"${data.quote_en}"` : `"${data.quote}"`;
     
     const imgElement = document.getElementById('rc-char-img');
     const fallbackElement = document.getElementById('rc-char-fallback');
@@ -245,7 +255,7 @@ function buildResultScreen() {
 
     const insContainer = document.getElementById('insights-container');
     insContainer.innerHTML = '';
-    const insights = currentLang === 'en' ? (data.insights_en || data.insights) : data.insights;
+    const insights = (currentLang === 'en' && data.insights_en) ? data.insights_en : data.insights;
     insights.forEach(insight => {
         insContainer.innerHTML += `<div class="insight-item mb-4">${insight}</div>`;
     });
@@ -254,6 +264,7 @@ function buildResultScreen() {
 // INTERACTIVE UPGRADE
 function populateUpgrades() {
     const upGrid = document.getElementById('upgrade-selector');
+    if (!upGrid) return;
     upGrid.innerHTML = '';
     upgradeOptions.forEach(opt => {
         const div = document.createElement('div');
@@ -270,7 +281,7 @@ function selectUpgrade(opt) {
     resultDiv.classList.remove('hidden');
     document.getElementById('ur-title').innerText = opt.title;
     
-    const actionText = currentLang === 'en' ? (opt.action_en || opt.action) : opt.action;
+    const actionText = (currentLang === 'en' && opt.action_en) ? opt.action_en : opt.action;
     const actionLabel = currentLang === 'en' ? "24-Hour Action" : "Action 24 Jam";
     document.getElementById('ur-action').innerHTML = `<strong>${actionLabel}:</strong> ${actionText}`;
     
@@ -306,7 +317,7 @@ function shareResult() {
     }
 }
 
-// DATA COLLECTION
+// DATA COLLECTION (Solusi Anti Gagal)
 function submitFeedback() {
     const text = document.getElementById('feedback-text').value;
     const selectedEmojiBtn = document.querySelector('.feedback-emojis button[data-selected="true"]');
@@ -325,14 +336,16 @@ function submitFeedback() {
 
     const scriptURL = 'https://script.google.com/macros/s/AKfycbwtrvVgCVW6Agr9iCHfrTKh67uM40msLYu88v9nxdlTk5L_sEnnEcxtfoV378r89lh2/exec';
 
+    // KUNCI UTAMA: text/plain dan TIDAK menggunakan mode: 'no-cors' agar data diterima Google
     fetch(scriptURL, {
-        method: 'POST', mode: 'no-cors',
+        method: 'POST',
         headers: { 'Content-Type': 'text/plain;charset=utf-8' },
         body: JSON.stringify(payload)
     })
-    .then(() => {
+    .then(response => {
         btn.innerText = currentLang === 'id' ? "Thanks atas feedbacknya! ✨" : "Thanks for the feedback! ✨";
     }).catch(error => {
+        console.error(error);
         btn.innerText = currentLang === 'id' ? "Gagal kirim, tapi santai aja!" : "Failed to send, but no worries!";
         btn.disabled = false;
     });
