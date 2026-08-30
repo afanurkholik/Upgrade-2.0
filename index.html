@@ -12,7 +12,6 @@
 </head>
 <body>
 
-    <!-- GLOBAL CONTROLS -->
     <div class="global-controls">
         <button id="btn-lang" onclick="switchLanguage()" class="control-btn">EN</button>
         <button id="btn-theme" onclick="toggleTheme()" class="control-btn">🌙</button>
@@ -49,13 +48,24 @@
     <section id="screen-assessment" class="screen">
         <div class="container tiny-container">
             <div class="progress-wrapper">
-                <span id="progress-text" class="progress-text">01 / 12</span>
+                <span id="progress-text" class="progress-text">01 / 13</span>
                 <div class="progress-bar"><div id="progress-fill" class="progress-fill"></div></div>
             </div>
             
+            <!-- Multiple Choice -->
             <div id="question-container" class="slide-up fade-content">
                 <h2 id="question-text" class="question-text">Loading...</h2>
                 <div id="options-container" class="options-container"></div>
+            </div>
+
+            <!-- Custom Story (Question 13) -->
+            <div id="custom-question-container" class="hidden slide-up fade-content">
+                <h2 class="question-text" data-i18n="cq_title">Oke, sekarang giliran kamu ngomong.</h2>
+                <p class="microcopy mb-6" style="margin-bottom: 24px;" data-i18n="cq_sub">Kalau ada satu hal tentang hidupmu yang belum sempat ditanya di sini, ceritain aja.</p>
+                
+                <textarea id="custom-story" class="form-input journal-card" data-i18n-ph="cq_ph" placeholder="Nggak harus rapi. Tulis aja apa yang lagi ada di kepala kamu. (Opsional)" rows="6"></textarea>
+                
+                <button onclick="submitCustomStory()" class="btn-primary w-100 mt-4" data-i18n="btn_finish">Lihat Hasil &rarr;</button>
             </div>
         </div>
     </section>
@@ -71,14 +81,13 @@
     <!-- SCREEN 4: RESULT -->
     <section id="screen-result" class="screen">
         <div class="container slide-up fade-content">
-            <p class="section-label text-center" data-i18n="res_label">YOUR CURRENT VERSION</p>
             
             <div class="card-wrapper" id="capture-area">
                 <div id="result-card" class="result-card">
                     <div class="card-pattern"></div>
                     <div class="rc-header">
                         <div class="rc-brand">IT'S TIME TO UPGRADE YOURSELF 2.0</div>
-                        <div class="rc-username"><span id="rc-name">NAME</span>'S CURRENT VERSION</div>
+                        <div class="rc-username" id="rc-headline">APPARENTLY, I'M...</div>
                     </div>
                     <div class="rc-character">
                         <div id="rc-char-wrapper" class="char-wrapper">
@@ -101,11 +110,13 @@
                         </div>
                     </div>
                     <div class="rc-footer">
-                        <div class="rc-footer-text" data-i18n="rc_footer">Your next version starts with one small move.</div>
+                        <div class="rc-footer-text">
+                            <span style="font-size: 1.15em; font-weight: 700; display: block; margin-bottom: 2px;" data-i18n="rc_ask">What's your current version?</span>
+                            <span data-i18n="rc_scan">Take the assessment & find your 2.0.</span>
+                        </div>
                         <div class="rc-qr-section">
                             <div id="qrcode"></div>
                         </div>
-                        <div class="rc-brand-footer">WALIK LABS v0.2</div>
                     </div>
                 </div>
             </div>
@@ -117,19 +128,19 @@
 
             <div class="content-block">
                 <h3 class="block-title" data-i18n="insight_title">Yang aku tangkap dari jawabanmu...</h3>
-                <div id="insights-container" class="insights-list"></div>
+                <div id="insights-container" class="insights-list conversational-insight"></div>
             </div>
 
             <div class="content-block bg-dark">
                 <h3 class="block-title accent">YOUR NEXT UPGRADE</h3>
                 <p class="microcopy text-light" data-i18n="upgrade_sub">Nggak perlu upgrade semuanya sekaligus. Pilih satu yang paling mau kamu commit dulu.</p>
-                <div id="upgrade-selector" class="upgrade-grid mt-4"></div>
                 
-                <div id="upgrade-result" class="hidden mt-4">
+                <div id="upgrade-selector" class="upgrade-grid mt-4 transition-container"></div>
+                
+                <div id="upgrade-result" class="mt-4 transition-container hidden">
                     <div class="selected-upgrade-card">
                         <h4 id="ur-title">TITLE</h4>
                         <p id="ur-action" class="mt-2">Action text</p>
-                        <!-- Tombol Pilih Ulang -->
                         <button onclick="resetUpgrade()" class="btn-secondary mt-4" style="padding: 8px 20px; font-size: 0.85rem;" data-i18n="btn_reselect">Pilih Ulang ↺</button>
                     </div>
                 </div>
@@ -151,7 +162,6 @@
                 <div class="soft-cta mt-8 text-center">
                     <p data-i18n="cta_text">Walik Labs sedang bikin tools kecil untuk membantu kamu menjalani proses upgrade ini.</p>
                     <span class="badge">Coming Soon</span>
-                    <!-- Tombol Mulai Lagi -->
                     <button onclick="location.reload()" class="btn-secondary w-100" style="margin-top: 2rem;" data-i18n="btn_restart">Mulai Lagi ↺</button>
                 </div>
             </div>
