@@ -490,7 +490,7 @@ function submitFeedback() {
     btn.disabled = true;
 
     // URL API GOOGLE SHEETS KAMU
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbwtrvVgCVW6Agr9iCHfrTKh67uM40msLYu88v9nxdlTk5L_sEnnEcxtfoV378r89lh2/exec';
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbwUxcf75Yr6yUl5h8-f9kfG54ZOXP9DLfGwETyb9fxez__mW91QI6bF0vdyINUtJFwQ/exec';
 
     // Menggunakan URLSearchParams agar lolos pengamanan Google
     const payload = new URLSearchParams({
