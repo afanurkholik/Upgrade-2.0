@@ -12,7 +12,7 @@
 </head>
 <body>
 
-    <!-- GLOBAL CONTROLS (Theme & Language) -->
+    <!-- GLOBAL CONTROLS -->
     <div class="global-controls">
         <button id="btn-lang" onclick="switchLanguage()" class="control-btn">EN</button>
         <button id="btn-theme" onclick="toggleTheme()" class="control-btn">🌙</button>
@@ -27,12 +27,10 @@
             
             <form id="onboarding-form" class="form-group">
                 <input type="text" id="user-name" placeholder="Nama panggilan kamu..." data-i18n-ph="ph_name" required>
-                
                 <div>
                     <input type="text" id="user-contact" placeholder="Email atau nomor WA..." data-i18n-ph="ph_contact">
                     <p id="contact-error" class="error-msg hidden"></p>
                 </div>
-
                 <div class="row">
                     <select id="user-gender" required>
                         <option value="" disabled selected data-i18n="opt_gender">Gender...</option>
@@ -57,19 +55,15 @@
             
             <div id="question-container" class="slide-up fade-content">
                 <h2 id="question-text" class="question-text">Loading...</h2>
-                <div id="options-container" class="options-container">
-                    <!-- Options injected via JS -->
-                </div>
+                <div id="options-container" class="options-container"></div>
             </div>
         </div>
     </section>
 
-    <!-- SCREEN 3: LOADING REVEAL -->
+    <!-- SCREEN 3: LOADING -->
     <section id="screen-loading" class="screen">
         <div class="container text-center loading-container fade-content">
-            <div class="scanner-wrapper">
-                <div class="cute-loader"></div>
-            </div>
+            <div class="scanner-wrapper"><div class="cute-loader"></div></div>
             <h2 id="loading-text" class="loading-text">Oke...</h2>
         </div>
     </section>
@@ -79,28 +73,23 @@
         <div class="container slide-up fade-content">
             <p class="section-label text-center" data-i18n="res_label">YOUR CURRENT VERSION</p>
             
-            <!-- COLLECTIBLE CARD (4:5) -->
             <div class="card-wrapper" id="capture-area">
                 <div id="result-card" class="result-card">
                     <div class="card-pattern"></div>
-                    
                     <div class="rc-header">
                         <div class="rc-brand">IT'S TIME TO UPGRADE YOURSELF 2.0</div>
                         <div class="rc-username"><span id="rc-name">NAME</span>'S CURRENT VERSION</div>
                     </div>
-
                     <div class="rc-character">
                         <div id="rc-char-wrapper" class="char-wrapper">
                             <img id="rc-char-img" src="" alt="Character" onerror="this.style.display='none'">
                             <div id="rc-char-fallback" class="char-fallback">🎒</div>
                         </div>
                     </div>
-
                     <div class="rc-identity">
                         <h2 id="rc-archetype" class="rc-title">THE EXPLORER</h2>
                         <p id="rc-quote" class="rc-quote">"Still figuring it out."</p>
                     </div>
-
                     <div class="rc-stats-container">
                         <div class="rc-stats">
                             <div class="stat-row"><span data-i18n="stat_dir">DIRECTION</span><span id="stat-dir"></span></div>
@@ -111,7 +100,6 @@
                             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
                         </div>
                     </div>
-                    
                     <div class="rc-footer">
                         <div class="rc-footer-text" data-i18n="rc_footer">Your next version starts with one small move.</div>
                         <div class="rc-qr-section">
@@ -123,25 +111,20 @@
                 </div>
             </div>
 
-            <!-- ACTION BUTTONS -->
             <div class="action-row mb-8">
                 <button onclick="downloadCard()" class="btn-primary" id="btn-dl" data-i18n="btn_dl">Download My Card &darr;</button>
                 <button onclick="shareResult()" class="btn-secondary" data-i18n="btn_share">Share My Result</button>
             </div>
 
-            <!-- INSIGHTS -->
             <div class="content-block">
                 <h3 class="block-title" data-i18n="insight_title">Yang aku tangkap dari jawabanmu...</h3>
                 <div id="insights-container" class="insights-list"></div>
             </div>
 
-            <!-- UPGRADE COMMITMENT -->
             <div class="content-block bg-dark">
                 <h3 class="block-title accent">YOUR NEXT UPGRADE</h3>
                 <p class="microcopy text-light" data-i18n="upgrade_sub">Nggak perlu upgrade semuanya sekaligus. Pilih satu yang paling mau kamu commit dulu.</p>
-                
                 <div id="upgrade-selector" class="upgrade-grid mt-4"></div>
-
                 <div id="upgrade-result" class="hidden mt-4">
                     <div class="selected-upgrade-card">
                         <h4 id="ur-title">TITLE</h4>
@@ -150,11 +133,9 @@
                 </div>
             </div>
 
-            <!-- FEEDBACK -->
             <div class="content-block">
                 <h3 class="block-title" data-i18n="fb_title">Boleh jujur?</h3>
                 <p class="microcopy" data-i18n="fb_sub">Tes ini masih versi awal. Kalau ada yang terasa relate, aneh, atau kurang pas—aku pengen tahu.</p>
-                
                 <div class="feedback-emojis" id="feedback-rating">
                     <button data-val="5">🔥</button>
                     <button data-val="4">🙂</button>
@@ -162,20 +143,13 @@
                     <button data-val="2">😐</button>
                     <button data-val="1">💀</button>
                 </div>
-                
                 <textarea id="feedback-text" class="form-input mt-4" placeholder="Bagian mana yang paling relate / nggak relate? (Opsional)" data-i18n-ph="fb_ph" rows="3"></textarea>
                 <button onclick="submitFeedback()" class="btn-primary w-100 mt-4" id="btn-submit-feedback" data-i18n="btn_fb">Kirim Feedback &rarr;</button>
-                
-                <div class="soft-cta mt-8 text-center">
-                    <p data-i18n="cta_text">Walik Labs sedang bikin tools kecil untuk membantu kamu menjalani proses upgrade ini.</p>
-                    <span class="badge">Coming Soon</span>
-                </div>
             </div>
         </div>
     </section>
 
-    <script src="questions.js"></script>
-    <script src="results.js"></script>
+    <!-- HANYA PANGGIL 1 FILE JS -->
     <script src="script.js"></script>
 </body>
 </html>
