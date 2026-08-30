@@ -139,41 +139,56 @@ const questionsData = [
 
 const archetypeData = {
     "explorer": {
-        title: "THE EXPLORER", theme: { bg: "#f0f9ff", accent: "#0ea5e9", text: "#0f172a" },
-        image: "assets/characters/explorer.png", fallbackEmoji: "🗺️",
-        quote: "Still figuring it out, and that's okay.", quote_en: "Still figuring it out, and that's okay.",
+        title: "THE EXPLORER", 
+        theme: { bg: "linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%)", accent: "#0284c7", text: "#0c4a6e" },
+        image: "assets/characters/explorer.png", 
+        fallbackEmoji: "🗺️",
+        quote: "Still figuring it out, and that's okay.", 
+        quote_en: "Still figuring it out, and that's okay.",
         stats: { dir: "████░░░░░░", act: "██████░░░░", gro: "████████░░" },
         insight: "aku nangkep kamu sebenarnya bukan orang yang nggak punya arah. Kamu justru punya *terlalu banyak* hal yang pengen dicoba. Masalahnya, semuanya terasa penting dan menarik di waktu yang sama.<br><br>Akhirnya kamu maju sedikit, mikir lagi, takut salah pilih, ganti arah, lalu mulai lagi dari awal. Kamu takut banget kalau milih satu, kamu bakal kelewatan kesempatan di tempat lain. Tapi sadar nggak? Akibatnya kamu malah jalan di tempat sambil sibuk mikir. Kamu nggak butuh kejelasan 100% buat mulai. Kejelasan itu justru baru dateng <i>setelah</i> kamu berani nyoba satu jalan.",
         insight_en: "I sense you aren't actually aimless. You just have *too many* things you want to try. The problem is, everything feels equally important right now.<br><br>You take a step, overthink it, fear missing out on other paths, change direction, and restart. Because you're so terrified of picking the wrong path, you end up running in place inside your own head. You don't need 100% clarity to begin. Clarity only comes <i>after</i> you dare to commit to one path."
     },
     "restarter": {
-        title: "THE RESTARTER", theme: { bg: "#fff7ed", accent: "#f97316", text: "#431407" },
-        image: "assets/characters/restarter.png", fallbackEmoji: "🚪",
-        quote: "Not from scratch. From experience.", quote_en: "Not from scratch. From experience.",
+        title: "THE RESTARTER", 
+        theme: { bg: "linear-gradient(135deg, #ffedd5 0%, #fed7aa 100%)", accent: "#ea580c", text: "#7c2d12" },
+        image: "assets/characters/restarter.png", 
+        fallbackEmoji: "🚪",
+        quote: "Not from scratch. From experience.", 
+        quote_en: "Not from scratch. From experience.",
         stats: { dir: "██████░░░░", act: "████░░░░░░", gro: "█████████░" },
         insight: "kelihatan banget kalau kamu baru aja ngelewatin sebuah 'akhir' yang lumayan nguras energi. Mungkin ekspektasi yang patah, plan yang gagal, atau emang fasenya udah habis.<br><br>Ada rasa capek, pengen istirahat, tapi di sisi lain ada ego yang maksa buat 'cepetan jalan lagi'. Dengerin aku: kamu nggak mulai dari nol kok. Kamu cuma lagi bawa ransel pengalaman buat masuk ke pintu yang baru. Nggak usah terlalu keras ngatur timeline, gapapa pelan-pelan asal fondasinya bener.",
         insight_en: "it's very clear you just went through an 'ending' that drained your energy. Maybe broken expectations, a failed plan, or just a phase that naturally closed.<br><br>You're exhausted and want to rest, but your ego pushes you to 'hurry up and move'. Listen: you are not starting from zero. You're just carrying your backpack of experience through a new door. Don't be too hard on your timeline; it's okay to move slowly as long as the foundation is right."
     },
     "builder": {
-        title: "THE BUILDER", theme: { bg: "#f7fee7", accent: "#84cc16", text: "#1a2e05" },
-        image: "assets/characters/builder.png", fallbackEmoji: "🧱",
-        quote: "You know the way. Just keep building.", quote_en: "You know the way. Just keep building.",
+        title: "THE BUILDER", 
+        theme: { bg: "linear-gradient(135deg, #ecfccb 0%, #d9f99d 100%)", accent: "#65a30d", text: "#365314" },
+        image: "assets/characters/builder.png", 
+        fallbackEmoji: "🧱",
+        quote: "You know the way. Just keep building.", 
+        quote_en: "You know the way. Just keep building.",
         stats: { dir: "████████░░", act: "████████░░", gro: "███████░░░" },
         insight: "sebenernya kamu tuh udah tahu persis apa yang harus dilakuin. Fondasinya udah ada, arahnya udah lumayan jelas. Musuh terbesarmu sekarang bukan kebingungan, tapi <b>rasa bosan</b> dan <b>ekspektasi</b>.<br><br>Kamu sering ngerasa udah jalan jauh, tapi kok hasilnya belum kelihatan signifikan? Akhirnya kamu merasa 'stuck', padahal kamu cuma lagi ada di fase pengulangan yang emang wajar. Tolong, jangan nyerah pas lagi capek-capeknya. Bangunan yang kokoh emang nggak kelihatan progresnya dalam semalam.",
         insight_en: "you actually know exactly what needs to be done. The foundation is there, the direction is clear. Your biggest enemies right now aren't confusion, but <b>boredom</b> and <b>expectations</b>.<br><br>You feel like you've walked so far, yet the results aren't massive yet. You feel 'stuck', when in reality you are just in the necessary phase of repetition. Please, don't quit just because you're tired. Solid buildings don't show their full progress overnight."
     },
     "dreamer": {
-        title: "THE DREAMER", theme: { bg: "#faf5ff", accent: "#a855f7", text: "#3b0764" },
-        image: "assets/characters/dreamer.png", fallbackEmoji: "✨",
-        quote: "Too many tabs open in your head.", quote_en: "Too many tabs open in your head.",
+        title: "THE DREAMER", 
+        theme: { bg: "linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 100%)", accent: "#9333ea", text: "#581c87" },
+        image: "assets/characters/dreamer.png", 
+        fallbackEmoji: "✨",
+        quote: "Too many tabs open in your head.", 
+        quote_en: "Too many tabs open in your head.",
         stats: { dir: "██████░░░░", act: "██░░░░░░░░", gro: "████████░░" },
         insight: "kepalamu itu jujur keren banget. Ide-idemu brilian, seleramu bagus. Tapi masalah utamanya: jarak antara kepalamu dan tanganmu kejauhan.<br><br>Kamu terlalu perfeksionis di dalam pikiran. Nunggu siap, nunggu sempurna, nunggu 'waktu yang pas'. Ujung-ujungnya ide itu cuma numpuk jadi wacana, dan kamu malah overthinking ngeliat orang lain udah pada jalan dengan ide yang lebih jelek dari punyamu. Ayo, turunin ekspektasimu ke dirimu sendiri, dan biarin eksekusi pertamamu jelek. Yang penting rilis.",
         insight_en: "your mind is honestly brilliant. Your ideas are great, your taste is impeccable. But the main problem is the distance between your brain and your hands.<br><br>You are a perfectionist in your thoughts. Waiting to be ready, waiting for the 'perfect time'. Ultimately, those ideas just pile up, and you end up overthinking while watching others succeed with ideas worse than yours. Drop your expectations, let your first execution be bad. Just release it."
     },
     "awakening": {
-        title: "THE AWAKENING", theme: { bg: "#fffbeb", accent: "#eab308", text: "#422006" },
-        image: "assets/characters/awakening.png", fallbackEmoji: "🌅",
-        quote: "You can't unsee what you know you need to do.", quote_en: "You can't unsee what you know you need to do.",
+        title: "THE AWAKENING", 
+        theme: { bg: "linear-gradient(135deg, #fef3c7 0%, #fde047 100%)", accent: "#ca8a04", text: "#713f12" },
+        image: "assets/characters/awakening.png", 
+        fallbackEmoji: "🌅",
+        quote: "You can't unsee what you know you need to do.", 
+        quote_en: "You can't unsee what you know you need to do.",
         stats: { dir: "█████░░░░░", act: "████░░░░░░", gro: "██████████" },
         insight: "aku ngerasain ada 'kegelisahan' yang udah nyampe di ubun-ubun. Kamu udah capek sama rutinitas autopilotmu, dan yang paling penting: kamu udah muak bikin alasan buat dirimu sendiri.<br><br>Kamu tahu ada yang salah, kamu tahu kamu harus gerak, tapi bingung narik pelatuk pertamanya di mana. Momentum sadar dan gelisah ini mahal banget. Jangan biarin ini cuma jadi bahan overthinking malem ini terus besok pagi kamu balik ke setelan pabrik. Lakuin satu hal kecil besok, just break the cycle.",
         insight_en: "I sense a 'restlessness' that has reached its peak. You are tired of your autopilot routine, and most importantly: you are sick of making excuses for yourself.<br><br>You know something is wrong, you know you have to move, but you don't know how to pull the trigger. This momentum of awakening is rare. Don't let this just become late-night overthinking fuel and return to default settings tomorrow. Do one tiny thing tomorrow. Just break the cycle."
@@ -181,56 +196,120 @@ const archetypeData = {
 };
 
 const upgradeOptions = [
-    { title: "🧠 CLEAR MY HEAD", action: "Tulis isi kepalamu 10 menit di kertas, lalu buang/simpan.", action_en: "Write your thoughts on paper for 10 mins, then keep or discard." },
-    { title: "🎯 PICK ONE DIRECTION", action: "Tulis 3 ide, coret 2, dan komit 7 hari buat 1 ide sisa.", action_en: "Write 3 ideas, cross out 2, and commit 7 days to the last one." },
-    { title: "⚡ TAKE ACTION", action: "Pilih satu tugas yang tertunda, kerjakan 15 menit sekarang.", action_en: "Pick one delayed task, do it for 15 mins now." },
-    { title: "🧱 BUILD A SKILL", action: "Tentukan 1 materi belajar (buku/video) dan pelajari 20 menit malam ini.", action_en: "Pick 1 learning material and study it for 20 mins tonight." },
-    { title: "🌱 START AGAIN", action: "Rapikan mejamu. Beri sinyal ke otak bahwa ini ruang yang baru.", action_en: "Clean your desk. Signal to your brain that this is a fresh space." },
-    { title: "🧘 SLOW DOWN", action: "Matikan notifikasi HP selama 2 jam malam ini. Nggak usah mikirin progres.", action_en: "Turn off notifications for 2 hours tonight. Don't worry about progress." }
+    { 
+        title: "🧠 CLEAR MY HEAD", 
+        action: "Tulis isi kepalamu 10 menit di kertas, lalu buang/simpan.", 
+        action_en: "Write your thoughts on paper for 10 mins, then keep or discard." 
+    },
+    { 
+        title: "🎯 PICK ONE DIRECTION", 
+        action: "Tulis 3 ide, coret 2, dan komit 7 hari buat 1 ide sisa.", 
+        action_en: "Write 3 ideas, cross out 2, and commit 7 days to the last one." 
+    },
+    { 
+        title: "⚡ TAKE ACTION", 
+        action: "Pilih satu tugas yang tertunda, kerjakan 15 menit sekarang.", 
+        action_en: "Pick one delayed task, do it for 15 mins now." 
+    },
+    { 
+        title: "🧱 BUILD A SKILL", 
+        action: "Tentukan 1 materi belajar dan pelajari 20 menit malam ini.", 
+        action_en: "Pick 1 learning material and study it for 20 mins tonight." 
+    },
+    { 
+        title: "🌱 START AGAIN", 
+        action: "Rapikan mejamu. Beri sinyal ke otak bahwa ini ruang yang baru.", 
+        action_en: "Clean your desk. Signal to your brain that this is a fresh space." 
+    },
+    { 
+        title: "🧘 SLOW DOWN", 
+        action: "Matikan notifikasi HP selama 2 jam malam ini. Nggak usah mikirin progres.", 
+        action_en: "Turn off notifications for 2 hours tonight. Don't worry about progress." 
+    }
 ];
 
 const uiTranslations = {
     id: {
         title: "IT'S TIME TO<br>UPGRADE YOURSELF <span class=\"highlight\">2.0</span>",
         subtitle: "Sebelum mulai... kenalan dulu dikit. Biar hasilnya terasa lebih personal.",
-        opt_gender: "Gender...", opt_f: "Perempuan", opt_m: "Laki-laki",
+        opt_gender: "Gender...", 
+        opt_f: "Perempuan", 
+        opt_m: "Laki-laki",
         privacy: "Data ini digunakan untuk personalisasi hasil dan pengembangan.",
-        btn_start: "Oke, mulai &rarr;", cq_title: "Oke, sekarang giliran kamu ngomong.",
+        btn_start: "Oke, mulai &rarr;", 
+        cq_title: "Oke, sekarang giliran kamu ngomong.",
         cq_sub: "Kalau ada satu hal tentang hidupmu yang belum sempat ditanya di sini, ceritain aja.",
-        btn_finish: "Lihat Hasil &rarr;", res_label: "YOUR CURRENT VERSION", 
-        stat_dir: "DIRECTION", stat_act: "ACTION", stat_gro: "GROWTH",
-        rc_ask: "What's your current version?", rc_scan: "Take the assessment & find your 2.0.",
-        btn_dl: "Download My Card &darr;", btn_share: "Share My Result",
+        btn_finish: "Lihat Hasil &rarr;", 
+        res_label: "ASSESSMENT RESULT", 
+        stat_dir: "DIRECTION", 
+        stat_act: "ACTION", 
+        stat_gro: "GROWTH",
+        rc_ask: "What's your current version?", 
+        rc_scan: "Take the test at Walik Labs.",
+        btn_dl: "Download My Card &darr;", 
+        btn_share: "Share My Result",
         insight_title: "Yang aku tangkap dari jawabanmu...",
         upgrade_sub: "Nggak perlu upgrade semuanya sekaligus. Pilih satu yang paling mau kamu commit dulu.",
-        fb_title: "Boleh jujur?", fb_sub: "Kalau ada yang terasa relate, aneh, atau kurang pas—aku pengen tahu.",
-        btn_fb: "Kirim Feedback &rarr;", err_contact: "Masukkan email (pakai @) atau no WA (angka saja) yang valid.",
-        btn_reselect: "Pilih Ulang ↺", btn_restart: "Mulai Lagi ↺",
-        prefix_story: "Membaca ceritamu tadi, ditambah jawaban-jawaban pilihanmu, ", prefix_no_story: "Dari pola jawabanmu, "
+        fb_title: "Boleh jujur?", 
+        fb_sub: "Kalau ada yang terasa relate, aneh, atau kurang pas—aku pengen tahu.",
+        btn_fb: "Kirim Feedback &rarr;", 
+        err_contact: "Masukkan email (pakai @) atau no WA (angka saja) yang valid.",
+        btn_reselect: "Pilih Ulang ↺", 
+        btn_restart: "Mulai Lagi ↺",
+        rate_low: "Kurang pas 💀", 
+        rate_high: "Relate banget! 🔥", 
+        prefix_story: "Membaca ceritamu tadi, ditambah jawaban-jawaban pilihanmu, ", 
+        prefix_no_story: "Dari pola jawabanmu, "
     },
     en: {
         title: "IT'S TIME TO<br>UPGRADE YOURSELF <span class=\"highlight\">2.0</span>",
         subtitle: "Before we start... let's get to know you.",
-        opt_gender: "Gender...", opt_f: "Female", opt_m: "Male",
+        opt_gender: "Gender...", 
+        opt_f: "Female", 
+        opt_m: "Male",
         privacy: "This data is used to personalize results.",
-        btn_start: "Let's begin &rarr;", cq_title: "Alright, your turn to speak.",
+        btn_start: "Let's begin &rarr;", 
+        cq_title: "Alright, your turn to speak.",
         cq_sub: "If there's one thing about your life we haven't asked, just let it out.",
-        btn_finish: "See Results &rarr;", res_label: "YOUR CURRENT VERSION", 
-        stat_dir: "DIRECTION", stat_act: "ACTION", stat_gro: "GROWTH",
-        rc_ask: "What's your current version?", rc_scan: "Take the assessment & find your 2.0.",
-        btn_dl: "Download My Card &darr;", btn_share: "Share My Result",
+        btn_finish: "See Results &rarr;", 
+        res_label: "ASSESSMENT RESULT", 
+        stat_dir: "DIRECTION", 
+        stat_act: "ACTION", 
+        stat_gro: "GROWTH",
+        rc_ask: "What's your current version?", 
+        rc_scan: "Take the test at Walik Labs.",
+        btn_dl: "Download My Card &darr;", 
+        btn_share: "Share My Result",
         insight_title: "Here is what I gathered...",
         upgrade_sub: "No need to upgrade all at once. Pick one you want to commit to first.",
-        fb_title: "Can we be honest?", fb_sub: "If anything felt weird or off—I'd love to know.",
-        btn_fb: "Send Feedback &rarr;", err_contact: "Enter a valid email or WA number.",
-        btn_reselect: "Change Selection ↺", btn_restart: "Start Over ↺",
-        prefix_story: "Reading what you just shared, plus your answers... ", prefix_no_story: "From your answers, "
+        fb_title: "Can we be honest?", 
+        fb_sub: "If anything felt weird or off—I'd love to know.",
+        btn_fb: "Send Feedback &rarr;", 
+        err_contact: "Enter a valid email or WA number.",
+        btn_reselect: "Change Selection ↺", 
+        btn_restart: "Start Over ↺",
+        rate_low: "Not really 💀", 
+        rate_high: "Super relate! 🔥", 
+        prefix_story: "Reading what you just shared, plus your answers... ", 
+        prefix_no_story: "From your answers, "
     }
 };
 
 const placeholders = {
-    id: { ph_name: "Nama panggilan...", ph_contact: "Email / WA...", ph_age: "Usia", fb_ph: "Bagian mana yang paling relate? (Opsional)", cq_ph: "Nggak harus rapi. Tulis aja apa yang lagi ada di kepala kamu. (Opsional)" },
-    en: { ph_name: "Nickname...", ph_contact: "Email / WA...", ph_age: "Age", fb_ph: "Which part relates to you? (Optional)", cq_ph: "Doesn't have to be perfect. Just write what's on your mind. (Optional)" }
+    id: { 
+        ph_name: "Nama panggilan (misal: afa)...", 
+        ph_contact: "Email / WA...", 
+        ph_age: "Usia", 
+        fb_ph: "Bagian mana yang paling relate? (Opsional)", 
+        cq_ph: "Nggak harus rapi. Tulis aja apa yang lagi ada di kepala kamu. (Opsional)" 
+    },
+    en: { 
+        ph_name: "Nickname (e.g. afa)...", 
+        ph_contact: "Email / WA...", 
+        ph_age: "Age", 
+        fb_ph: "Which part relates to you? (Optional)", 
+        cq_ph: "Doesn't have to be perfect. Just write what's on your mind. (Optional)" 
+    }
 };
 
 // ==========================================
@@ -238,7 +317,7 @@ const placeholders = {
 // ==========================================
 
 let userData = { name: '', contact: '', gender: '', age: '', customStory: '', selectedUpgrade: '' };
-let currentQuestionIndex = 0, userAnswers = [], finalArchetype = '', currentLang = 'id', isDarkMode = false;
+let currentQuestionIndex = 0, userAnswers = [], finalArchetype = '', currentLang = 'id', isDarkMode = false, feedbackRating = 0;
 
 document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('onboarding-form').addEventListener('submit', function(e) {
@@ -265,15 +344,6 @@ document.addEventListener('DOMContentLoaded', () => {
         
         switchScreen('screen-assessment');
         renderQuestion();
-    });
-
-    const emojis = document.querySelectorAll('.feedback-emojis button');
-    emojis.forEach(btn => {
-        btn.onclick = () => {
-            emojis.forEach(b => b.classList.remove('selected'));
-            btn.classList.add('selected');
-            btn.dataset.selected = 'true';
-        }
     });
 });
 
@@ -384,12 +454,12 @@ function buildResultScreen() {
     const data = archetypeData[finalArchetype];
     const rCard = document.getElementById('result-card');
     
-    rCard.style.backgroundColor = data.theme.bg;
+    rCard.style.background = data.theme.bg;
     rCard.style.color = data.theme.text;
     document.documentElement.style.setProperty('--card-accent', data.theme.accent);
     
-    const headline = currentLang === 'en' ? "APPARENTLY, I'M..." : "TERNYATA AKU...";
-    document.getElementById('rc-headline').innerText = headline;
+    document.getElementById('rc-name-display').innerText = userData.name;
+    document.getElementById('rc-headline').innerText = currentLang === 'en' ? "APPARENTLY, I'M..." : "TERNYATA AKU...";
     
     document.getElementById('rc-archetype').innerText = data.title;
     document.getElementById('rc-quote').innerText = currentLang === 'en' ? `"${data.quote_en}"` : `"${data.quote}"`;
@@ -407,7 +477,7 @@ function buildResultScreen() {
     document.getElementById('qrcode').innerHTML = ""; 
     new QRCode(document.getElementById("qrcode"), {
         text: "https://glittering-sunflower-a860d3.netlify.app/",
-        width: 60, height: 60, colorDark: "#000000", colorLight: "#ffffff"
+        width: 44, height: 44, colorDark: "#000000", colorLight: "#ffffff"
     });
 
     const insContainer = document.getElementById('insights-container');
@@ -477,6 +547,18 @@ function resetUpgrade() {
     }, 300);
 }
 
+// LIQUID SLIDER RATING LOGIC
+function setRating(val) {
+    feedbackRating = val;
+    const fill = document.getElementById('liquid-fill');
+    fill.style.width = (val * 20) + '%';
+    
+    const pipe = document.getElementById('liquid-pipe-container');
+    pipe.classList.remove('splash-effect');
+    void pipe.offsetWidth; // trigger reflow
+    pipe.classList.add('splash-effect');
+}
+
 function downloadCard() {
     const btn = document.getElementById('btn-dl');
     const originalText = btn.innerText;
@@ -508,14 +590,12 @@ function shareResult() {
 
 function submitFeedback() {
     const text = document.getElementById('feedback-text').value;
-    const selectedEmojiBtn = document.querySelector('.feedback-emojis button[data-selected="true"]');
-    const rating = selectedEmojiBtn ? selectedEmojiBtn.dataset.val : '-';
     
     const btn = document.getElementById('btn-submit-feedback');
     btn.innerText = currentLang === 'id' ? "Menyimpan..." : "Saving...";
     btn.disabled = true;
 
-    // URL API GOOGLE SHEETS KAMU
+    // URL API GOOGLE SHEETS KAMU YANG SUDAH SESUAI
     const scriptURL = 'https://script.google.com/macros/s/AKfycbxnaL4XlkJbx2vBZtxWqeXkaJyPoTUW70IOKTZpMYCdjG8L4nWE0BCuwEodlOH0TXc/exec';
 
     const payload = new URLSearchParams({
@@ -523,10 +603,10 @@ function submitFeedback() {
         contact: userData.contact || "-",
         gender: userData.gender || "-",
         age: userData.age || "-",
-        customStory: userData.customStory || "-", // Kolom baru cerita
+        customStory: userData.customStory || "-", // Kolom baru cerita (Q 13)
         archetype: finalArchetype || "-",
         selectedUpgrade: userData.selectedUpgrade || "-",
-        rating: rating,
+        rating: feedbackRating || "-", // Ini nilai dari slider air (1 sampai 5)
         feedback: text || "-"
     });
 
